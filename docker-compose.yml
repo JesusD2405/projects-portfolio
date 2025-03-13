@@ -1,0 +1,19 @@
+services:
+  app:
+    container_name: projects-portfolio-app
+    build:
+      context: ./
+      target: ${STAGE}
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - ${APP_PORT}:3000
+    networks:
+      - projects-portfolio-network
+
+networks:
+  projects-portfolio-network:
+    external: true
