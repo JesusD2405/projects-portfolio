@@ -10,6 +10,77 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Ubuntu - Colour Palette | Ref: https://design.ubuntu.com/brand/colour-palette */
+  /* Cool Grey */
+  --color-warm-grey: #2C2C2C;
+  --color-cool-grey: #333333;
+  --color-text-grey: #111111;
+  /* Ubuntu Orange */
+  --color-ubuntu-orange-950: #E95420;
+  --color-ubuntu-orange-900: #EB6536;
+  --color-ubuntu-orange-800: #ED764D;
+  --color-ubuntu-orange-700: #F08763;
+  --color-ubuntu-orange-600: #F29879;
+  --color-ubuntu-orange-500: #F4AA90;
+  --color-ubuntu-orange-400: #F6BBA6;
+  --color-ubuntu-orange-300: #F8CCBC;
+  --color-ubuntu-orange-200: #FBDDD2;
+  --color-ubuntu-orange-100: #FDEEE9;
+  /* Canonical Aubergine */
+  --color-canonical-aubergine-950: #772953;
+  --color-canonical-aubergine-900: #843E64;
+  --color-canonical-aubergine-800: #925375;
+  --color-canonical-aubergine-700: #9F6986;
+  --color-canonical-aubergine-600: #AD7E97;
+  --color-canonical-aubergine-500: #BB94A9;
+  --color-canonical-aubergine-400: #C8A9BA;
+  --color-canonical-aubergine-300: #D6BECB;
+  --color-canonical-aubergine-200: #E3D4DC;
+  --color-canonical-aubergine-100: #F1E9ED;
+  /* Light Aubergine */
+  --color-ligth-aubergine-950: #77216F;
+  --color-ligth-aubergine-900: #84377D;
+  --color-ligth-aubergine-800: #924D8B;
+  --color-ligth-aubergine-700: #9F639A;
+  --color-ligth-aubergine-600: #AD79A8;
+  --color-ligth-aubergine-500: #BB90B7;
+  --color-ligth-aubergine-400: #C8A6C5;
+  --color-ligth-aubergine-300: #D6BCD3;
+  --color-ligth-aubergine-200: #E3D2E2;
+  --color-ligth-aubergine-100: #F1E8F0;
+  /* Mid Aubergine */
+  --color-mid-aubergine-950: #5E2750;
+  --color-mid-aubergine-900: #6E3C61;
+  --color-mid-aubergine-800: #7E5273;
+  --color-mid-aubergine-700: #8E6784;
+  --color-mid-aubergine-600: #9E7D96;
+  --color-mid-aubergine-500: #AE93A7;
+  --color-mid-aubergine-400: #BEA8B9;
+  --color-mid-aubergine-300: #CEBECA;
+  --color-mid-aubergine-200: #DED3DC;
+  --color-mid-aubergine-100: #EEE9ED;
+  /* Dark Aubergine */
+  --color-dark-aubergine-950: #2C001E;
+  --color-dark-aubergine-900: #411934;
+  --color-dark-aubergine-800: #56334B;
+  --color-dark-aubergine-700: #6B4C61;
+  --color-dark-aubergine-600: #806678;
+  --color-dark-aubergine-500: #957F8E;
+  --color-dark-aubergine-400: #AA99A5;
+  --color-dark-aubergine-300: #BFB2BB;
+  --color-dark-aubergine-200: #D4CCD2;
+  --color-dark-aubergine-100: #E9E5E8;
+  /* Warm Grey */
+  --color-warm-grey-950: #AEA79F;
+  --color-warm-grey-900: #B6AFA8;
+  --color-warm-grey-800: #BEB8B2;
+  --color-warm-grey-700: #C6C1BB;
+  --color-warm-grey-600: #CECAC5;
+  --color-warm-grey-500: #D6D3CF;
+  --color-warm-grey-400: #DEDBD8;
+  --color-warm-grey-300: #E6E4E2;
+  --color-warm-grey-200: #EEEDEB;
+  --color-warm-grey-100: #F6F6F5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +91,7 @@
 }
 
 body {
-  background: var(--background);
+  /* background: var(--background); */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
