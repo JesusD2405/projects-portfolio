@@ -6,11 +6,22 @@ import Toolbar from "./toolbar";
 
 const Navbar: FC = () => {
   return (
-    <nav className="z-10 fixed bg-cool-grey top-0 w-full">
-      <div className="flex flex-row justify-between px-3 py-1">
-        <div />
-        <Notification />
-        <Toolbar />
+    <nav className="ubuntu-panel">
+      <div className="panel-inner">
+        {/* Left: Activities */}
+        <div className="panel-left">
+          <button className="panel-activities-btn">Activities</button>
+        </div>
+
+        {/* Center: Date/Time */}
+        <div className="panel-center">
+          <Notification />
+        </div>
+
+        {/* Right: System Tray */}
+        <div className="panel-right">
+          <Toolbar />
+        </div>
       </div>
     </nav>
   );

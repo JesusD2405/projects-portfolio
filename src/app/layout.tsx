@@ -4,8 +4,6 @@ import "./globals.css";
 // Components
 import { Provider } from "@/components/chakra-ui/provider";
 import Navbar from "@/components/core/navbar/navbar";
-// Icons
-// import AppleTouchIcon from "../../public/COF apple-touch-icon.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Jesús D. Pérez | Software Developer",
   description:
-    "Full-Stack Software Developer | Node.Js | Django | React | Vue.js",
+    "Full-Stack Software Developer Portfolio | Node.Js | Django | React | Vue.js — Ubuntu 24.04 LTS Inspired",
 };
 
 export default function RootLayout({
@@ -48,15 +46,9 @@ export default function RootLayout({
           sizes="16x16"
           href="https://assets.ubuntu.com/v1/16c27f81-COF%20favicon-16x16.png"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="48x48"
-          href="/static/images/favicons/COF-favicon-48x48.png?v=fa3c63f"
-        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider>
           <Navbar />
