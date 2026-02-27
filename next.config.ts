@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["@chakra-ui/react"],
   },
   output: "standalone",
+  images: {
+    qualities: [75, 90],
+  },
 };
 
 export default nextConfig;

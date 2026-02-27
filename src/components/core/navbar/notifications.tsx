@@ -6,8 +6,9 @@ import { EmptyState, VStack } from "@chakra-ui/react";
 import { BellOff } from "lucide-react";
 
 const Notification: FC = () => {
-  const [currentDate, setCurrentDate] = useState<string | null>(null);
-  const [currentTime, setCurrentTime] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [currentDate, setCurrentDate] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
 
   const getCurrentDateFormat = () => {
     const date1 = new Date();
@@ -36,17 +37,28 @@ const Notification: FC = () => {
   useEffect(() => {
     setCurrentDate(getCurrentDateFormat());
     setCurrentTime(getCurrenTimeFormat());
+    setMounted(true);
+
+    // Actualizar el reloj cada minuto
+    const interval = setInterval(() => {
+      setCurrentDate(getCurrentDateFormat());
+      setCurrentTime(getCurrenTimeFormat());
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
-          {currentDate && currentTime && (
+        <Button variant="outline" size="sm" suppressHydrationWarning>
+          {mounted && currentDate && currentTime ? (
             <>
-              <span className="lowercase">{currentDate || ""}</span>
-              <span className="uppercase">{currentTime || ""}</span>
+              <span className="lowercase">{currentDate}</span>
+              <span className="uppercase">{currentTime}</span>
             </>
+          ) : (
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           )}
         </Button>
       </Menu.Trigger>
@@ -68,7 +80,7 @@ const Notification: FC = () => {
                 </EmptyState.Root>
               </Menu.Item>
               {/* Calendario */}
-              <Menu.Item value="new-txt"></Menu.Item>
+              <Menu.Item value="calendar"></Menu.Item>
             </Group>
           </Menu.Content>
         </Menu.Positioner>
