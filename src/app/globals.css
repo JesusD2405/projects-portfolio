@@ -3,6 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Ubuntu - Colour Palette | Ref: https://design.ubuntu.com/brand/colour-palette */
+  --ubuntu-panel: rgba(44, 44, 44, 0.92);
+  --ubuntu-dock: rgba(30, 30, 30, 0.85);
+  --ubuntu-orange: #E95420;
+  --ubuntu-aubergine: #300A24;
+  --ubuntu-dark-aubergine: #2C001E;
+  --ubuntu-light-aubergine: #77216F;
+  --ubuntu-mid-aubergine: #5E2750;
+  --ubuntu-window-bg: #2b2b2b;
+  --ubuntu-window-titlebar: #303030;
+  --ubuntu-window-border: rgba(255, 255, 255, 0.08);
+  --ubuntu-text: #f0f0f0;
+  --ubuntu-text-muted: #999999;
+  --ubuntu-terminal-bg: #300A24;
+  --ubuntu-terminal-text: #ffffff;
+  --ubuntu-btn-close: #E95420;
+  --ubuntu-btn-minimize: #f5c211;
+  --ubuntu-btn-maximize: #49c949;
 }
 
 @theme inline {
@@ -10,6 +28,76 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Cool Grey */
+  --color-warm-grey: #2C2C2C;
+  --color-cool-grey: #333333;
+  --color-text-grey: #111111;
+  /* Ubuntu Orange */
+  --color-ubuntu-orange-950: #E95420;
+  --color-ubuntu-orange-900: #EB6536;
+  --color-ubuntu-orange-800: #ED764D;
+  --color-ubuntu-orange-700: #F08763;
+  --color-ubuntu-orange-600: #F29879;
+  --color-ubuntu-orange-500: #F4AA90;
+  --color-ubuntu-orange-400: #F6BBA6;
+  --color-ubuntu-orange-300: #F8CCBC;
+  --color-ubuntu-orange-200: #FBDDD2;
+  --color-ubuntu-orange-100: #FDEEE9;
+  /* Canonical Aubergine */
+  --color-canonical-aubergine-950: #772953;
+  --color-canonical-aubergine-900: #843E64;
+  --color-canonical-aubergine-800: #925375;
+  --color-canonical-aubergine-700: #9F6986;
+  --color-canonical-aubergine-600: #AD7E97;
+  --color-canonical-aubergine-500: #BB94A9;
+  --color-canonical-aubergine-400: #C8A9BA;
+  --color-canonical-aubergine-300: #D6BECB;
+  --color-canonical-aubergine-200: #E3D4DC;
+  --color-canonical-aubergine-100: #F1E9ED;
+  /* Light Aubergine */
+  --color-ligth-aubergine-950: #77216F;
+  --color-ligth-aubergine-900: #84377D;
+  --color-ligth-aubergine-800: #924D8B;
+  --color-ligth-aubergine-700: #9F639A;
+  --color-ligth-aubergine-600: #AD79A8;
+  --color-ligth-aubergine-500: #BB90B7;
+  --color-ligth-aubergine-400: #C8A6C5;
+  --color-ligth-aubergine-300: #D6BCD3;
+  --color-ligth-aubergine-200: #E3D2E2;
+  --color-ligth-aubergine-100: #F1E8F0;
+  /* Mid Aubergine */
+  --color-mid-aubergine-950: #5E2750;
+  --color-mid-aubergine-900: #6E3C61;
+  --color-mid-aubergine-800: #7E5273;
+  --color-mid-aubergine-700: #8E6784;
+  --color-mid-aubergine-600: #9E7D96;
+  --color-mid-aubergine-500: #AE93A7;
+  --color-mid-aubergine-400: #BEA8B9;
+  --color-mid-aubergine-300: #CEBECA;
+  --color-mid-aubergine-200: #DED3DC;
+  --color-mid-aubergine-100: #EEE9ED;
+  /* Dark Aubergine */
+  --color-dark-aubergine-950: #2C001E;
+  --color-dark-aubergine-900: #411934;
+  --color-dark-aubergine-800: #56334B;
+  --color-dark-aubergine-700: #6B4C61;
+  --color-dark-aubergine-600: #806678;
+  --color-dark-aubergine-500: #957F8E;
+  --color-dark-aubergine-400: #AA99A5;
+  --color-dark-aubergine-300: #BFB2BB;
+  --color-dark-aubergine-200: #D4CCD2;
+  --color-dark-aubergine-100: #E9E5E8;
+  /* Warm Grey */
+  --color-warm-grey-950: #AEA79F;
+  --color-warm-grey-900: #B6AFA8;
+  --color-warm-grey-800: #BEB8B2;
+  --color-warm-grey-700: #C6C1BB;
+  --color-warm-grey-600: #CECAC5;
+  --color-warm-grey-500: #D6D3CF;
+  --color-warm-grey-400: #DEDBD8;
+  --color-warm-grey-300: #E6E4E2;
+  --color-warm-grey-200: #EEEDEB;
+  --color-warm-grey-100: #F6F6F5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +107,1368 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box;
 }
+
+body {
+  color: var(--foreground);
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ===================== UBUNTU TOP PANEL ===================== */
+.ubuntu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: var(--ubuntu-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.panel-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.panel-left,
+.panel-center,
+.panel-right {
+  display: flex;
+  align-items: center;
+}
+
+.panel-left {
+  flex: 1;
+}
+
+.panel-center {
+  flex: 0 0 auto;
+}
+
+.panel-right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.panel-activities-btn {
+  background: none;
+  border: none;
+  color: var(--ubuntu-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 10px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.panel-activities-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* System Tray */
+.system-tray {
+  display: flex;
+  align-items: center;
+}
+
+.tray-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ubuntu-text);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tray-icons:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===================== UBUNTU DESKTOP ===================== */
+.ubuntu-desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.desktop-wallpaper {
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===================== UBUNTU DOCK ===================== */
+.dock-container {
+  position: fixed;
+  left: 0;
+  top: 28px;
+  bottom: 0;
+  width: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  background: var(--ubuntu-dock);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 90;
+}
+
+.dock-activities-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ubuntu-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 4px;
+}
+
+.dock-activities-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: scale(1.08);
+}
+
+.dock-separator {
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 6px 0;
+}
+
+.dock-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.dock-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.dock-tooltip {
+  position: absolute;
+  left: 72px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 30, 30, 0.95);
+  color: var(--ubuntu-text);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 200;
+  animation: tooltipFadeIn 0.15s ease;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.dock-icon-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--icon-color, #444);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.dock-icon-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dock-icon-btn.dock-icon-active {
+  box-shadow: 0 0 0 2px var(--ubuntu-orange), 0 4px 12px rgba(233, 84, 32, 0.3);
+}
+
+.dock-icon-svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.dock-active-indicator {
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--ubuntu-orange);
+  border-radius: 0 3px 3px 0;
+  animation: indicatorFadeIn 0.2s ease;
+}
+
+@keyframes indicatorFadeIn {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: 20px;
+  }
+}
+
+/* ===================== DESKTOP WINDOW ===================== */
+.desktop-window {
+  position: fixed;
+  top: 48px;
+  left: 88px;
+  right: 20px;
+  bottom: 20px;
+  background: var(--ubuntu-window-bg);
+  border-radius: 12px;
+  border: 1px solid var(--ubuntu-window-border);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 50;
+  animation: windowOpen 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.desktop-window-maximized {
+  top: 28px;
+  left: 68px;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  min-height: 38px;
+  background: var(--ubuntu-window-titlebar);
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  user-select: none;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-controls-spacer {
+  width: 68px;
+}
+
+.window-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: transparent;
+}
+
+.window-btn:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.window-btn-close {
+  background: var(--ubuntu-btn-close);
+}
+
+.window-btn-close:hover {
+  background: #ff6b4a;
+}
+
+.window-btn-minimize {
+  background: var(--ubuntu-btn-minimize);
+}
+
+.window-btn-minimize:hover {
+  background: #ffd93d;
+}
+
+.window-btn-maximize {
+  background: var(--ubuntu-btn-maximize);
+}
+
+.window-btn-maximize:hover {
+  background: #5dd55d;
+}
+
+.window-title {
+  flex: 1;
+  text-align: center;
+  color: var(--ubuntu-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.window-content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--ubuntu-window-bg);
+}
+
+/* Custom scrollbar for window */
+.window-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===================== TERMINAL SECTION ===================== */
+.terminal-section {
+  background: var(--ubuntu-terminal-bg);
+  color: var(--ubuntu-terminal-text);
+  font-family: "Ubuntu Mono", "Geist Mono", monospace;
+  padding: 20px;
+  min-height: 100%;
+}
+
+.terminal-header {
+  margin-bottom: 12px;
+}
+
+.terminal-prompt {
+  color: #4CE94C;
+  font-weight: 700;
+}
+
+.terminal-cmd {
+  color: #ffffff;
+}
+
+.terminal-cursor {
+  color: #4CE94C;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-output {
+  margin: 16px 0;
+}
+
+.terminal-ascii {
+  color: var(--ubuntu-orange);
+  font-size: 11px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.terminal-info {
+  margin-top: 16px;
+  line-height: 2;
+}
+
+.terminal-key {
+  color: #87CEEB;
+  font-weight: 600;
+}
+
+.terminal-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.terminal-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ubuntu-orange);
+  text-decoration: none;
+  padding: 4px 12px;
+  border: 1px solid rgba(233, 84, 32, 0.4);
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 13px;
+}
+
+.terminal-links a:hover {
+  background: rgba(233, 84, 32, 0.15);
+  border-color: var(--ubuntu-orange);
+}
+
+/* Neofetch Layout */
+.neofetch-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.neofetch-info {
+  flex: 1;
+  line-height: 1.9;
+}
+
+.neofetch-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.terminal-at {
+  color: var(--ubuntu-text);
+}
+
+.neofetch-separator {
+  color: var(--ubuntu-orange);
+  margin: 2px 0;
+}
+
+.terminal-about {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ===================== FILE MANAGER SECTION ===================== */
+.file-manager-section {
+  display: flex;
+  min-height: 100%;
+}
+
+.file-sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: #252525;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px;
+}
+
+.file-sidebar h3 {
+  color: var(--ubuntu-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.file-item {
+  color: var(--ubuntu-text);
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  list-style: none;
+}
+
+.file-item:hover,
+.file-item.active {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.file-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Experience Card */
+.experience-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+.experience-card:hover {
+  border-color: rgba(233, 84, 32, 0.3);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.experience-header h3 {
+  color: var(--ubuntu-text);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.experience-period {
+  color: var(--ubuntu-orange);
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(233, 84, 32, 0.12);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.experience-company {
+  color: var(--ubuntu-text-muted);
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  font-weight: 400;
+}
+
+.experience-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tech Tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tech-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ubuntu-text);
+  background: rgba(119, 33, 111, 0.3);
+  border: 1px solid rgba(119, 33, 111, 0.5);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.25s;
+}
+
+.project-card:hover {
+  border-color: rgba(233, 84, 32, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.project-card-header h3 {
+  color: var(--ubuntu-text);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.project-card-header a {
+  color: var(--ubuntu-text-muted);
+  transition: color 0.2s;
+}
+
+.project-card-header a:hover {
+  color: var(--ubuntu-orange);
+}
+
+.project-card p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===================== EXPERIENCE TIMELINE ===================== */
+.timeline-section {
+  padding: 24px 32px;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  animation: timelineSlideIn 0.4s ease both;
+}
+
+@keyframes timelineSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+  min-width: 36px;
+  padding-top: 2px;
+}
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ubuntu-text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timeline-dot-active {
+  background: var(--ubuntu-orange);
+  border-color: var(--ubuntu-orange);
+  color: white;
+  box-shadow: 0 0 16px rgba(233, 84, 32, 0.4);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(180deg, rgba(233, 84, 32, 0.4), rgba(255, 255, 255, 0.08));
+  margin: 4px 0;
+}
+
+.timeline-content {
+  flex: 1;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.timeline-item-expanded .timeline-content {
+  border-color: rgba(233, 84, 32, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-header-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.timeline-header-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.timeline-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-role {
+  color: var(--ubuntu-text);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.timeline-company {
+  color: var(--ubuntu-text-muted);
+  font-size: 12px;
+}
+
+.timeline-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.timeline-period {
+  color: var(--ubuntu-orange);
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(233, 84, 32, 0.12);
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.timeline-chevron {
+  color: var(--ubuntu-text-muted);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+}
+
+.timeline-chevron-open {
+  transform: rotate(180deg);
+  color: var(--ubuntu-orange);
+}
+
+.timeline-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+  padding: 0 16px;
+}
+
+.timeline-detail-open {
+  max-height: 300px;
+  padding: 0 16px 16px;
+  opacity: 1;
+}
+
+.timeline-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+/* ===================== ANIMATED SKILLS DASHBOARD ===================== */
+.skills-dashboard {
+  padding: 24px;
+  min-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.skill-card-group {
+  animation: skillGroupFadeIn 0.5s ease both;
+}
+
+@keyframes skillGroupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-group-title {
+  color: var(--ubuntu-text);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-group-icon {
+  font-size: 18px;
+}
+
+.skill-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.skill-circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: all 0.25s;
+  animation: skillCardPop 0.4s ease both;
+}
+
+@keyframes skillCardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.skill-circle-card:hover {
+  border-color: rgba(233, 84, 32, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.skill-circle-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.skill-circle-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skill-circle-progress {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-circle-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Ubuntu Mono", "Geist Mono", monospace;
+}
+
+.skill-circle-name {
+  color: var(--ubuntu-text);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ===================== CONTACT SECTION ===================== */
+.contact-section {
+  display: flex;
+  min-height: 100%;
+}
+
+.contact-compose {
+  flex: 1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.compose-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.compose-field label {
+  color: var(--ubuntu-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  width: 60px;
+  min-width: 60px;
+}
+
+.compose-field span {
+  color: var(--ubuntu-text);
+  font-size: 13px;
+}
+
+.compose-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--ubuntu-text);
+  font-size: 13px;
+  outline: none;
+}
+
+.compose-field input::placeholder {
+  color: var(--ubuntu-text-muted);
+}
+
+.compose-body {
+  flex: 1;
+  padding: 16px;
+}
+
+.compose-body textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  background: transparent;
+  border: none;
+  color: var(--ubuntu-text);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.compose-body textarea::placeholder {
+  color: var(--ubuntu-text-muted);
+}
+
+.compose-actions {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.compose-send-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ubuntu-orange);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.compose-send-btn:hover {
+  background: #d44915;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(233, 84, 32, 0.35);
+}
+
+.contact-info-sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #252525;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 24px;
+}
+
+.contact-info-sidebar h3 {
+  color: var(--ubuntu-text);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-links a,
+.contact-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.contact-links a:hover {
+  color: var(--ubuntu-orange);
+}
+
+.contact-location {
+  margin: 0;
+}
+
+/* ===================== NOTIFICATION CENTER ===================== */
+/* Style overrides for Chakra Menu in panel context */
+.panel-center button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--ubuntu-text) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  height: 28px !important;
+  padding: 0 8px !important;
+  border-radius: 4px !important;
+  min-width: auto !important;
+}
+
+.panel-center button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .neofetch-layout {
+    gap: 16px;
+  }
+
+  .terminal-ascii {
+    font-size: 7px;
+  }
+
+  .skill-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .timeline-section {
+    padding: 16px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dock-container {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    padding: 0 8px;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .dock-items {
+    flex-direction: row;
+  }
+
+  .dock-separator {
+    width: 1px;
+    height: 32px;
+    margin: 0 6px;
+  }
+
+  .dock-activities-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .dock-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .dock-tooltip {
+    left: 50%;
+    top: auto;
+    bottom: 68px;
+    transform: translateX(-50%);
+  }
+
+  .dock-active-indicator {
+    left: 50%;
+    top: auto;
+    bottom: -3px;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .desktop-window {
+    top: 28px;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    border-radius: 0;
+  }
+
+  /* Neofetch responsive */
+  .neofetch-layout {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .terminal-ascii {
+    font-size: 6px;
+    text-align: center;
+  }
+
+  .neofetch-info {
+    line-height: 1.7;
+  }
+
+  .neofetch-info p {
+    font-size: 12px;
+  }
+
+  .terminal-section {
+    padding: 14px;
+  }
+
+  /* Timeline responsive */
+  .timeline-section {
+    padding: 12px 14px;
+  }
+
+  .timeline-track {
+    width: 28px;
+    min-width: 28px;
+  }
+
+  .timeline-dot {
+    width: 26px;
+    height: 26px;
+  }
+
+  .timeline-dot svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-item {
+    gap: 10px;
+  }
+
+  .timeline-header-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .timeline-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .timeline-role {
+    font-size: 13px;
+  }
+
+  /* Skills responsive */
+  .skills-dashboard {
+    padding: 14px;
+    gap: 20px;
+  }
+
+  .skill-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .skill-circle-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .skill-circle-value {
+    font-size: 13px;
+  }
+
+  .skill-circle-name {
+    font-size: 10px;
+  }
+
+  .skill-circle-card {
+    padding: 10px 4px;
+  }
+
+  /* File manager responsive */
+  .file-manager-section {
+    flex-direction: column;
+  }
+
+  .file-sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .contact-section {
+    flex-direction: column;
+  }
+
+  .contact-info-sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal-links {
+    flex-direction: column;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .ubuntu-panel {
+    height: 24px;
+  }
+
+  .panel-activities-btn {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .tray-icons {
+    gap: 4px;
+    padding: 1px 6px;
+  }
+
+  .tray-icons svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .dock-container {
+    height: 52px;
+  }
+
+  .dock-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .dock-activities-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .terminal-ascii {
+    display: none;
+  }
+
+  .window-title {
+    font-size: 11px;
+  }
+
+  .skill-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline-track {
+    width: 22px;
+    min-width: 22px;
+  }
+
+  .timeline-dot {
+    width: 22px;
+    height: 22px;
+  }
+
+  .timeline-dot svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
