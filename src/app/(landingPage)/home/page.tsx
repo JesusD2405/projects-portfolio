@@ -44,16 +44,16 @@ export default function Home() {
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <picture style={{ position: "relative", display: "block", width: "100%", height: "100%" }}>
           <source
-            srcSet="/imgs/backgrounds/numbat_wallpaper_color_3480x2160.png"
+            srcSet="imgs/backgrounds/numbat_wallpaper_color_3480x2160.png"
             media="(min-width: 2560px)"
           />
           <source
-            srcSet="/imgs/backgrounds/numbat_wallpaper_color_2560x1440.png"
+            srcSet="imgs/backgrounds/numbat_wallpaper_color_2560x1440.png"
             media="(min-width: 1920px)"
           />
           <Image
             className="desktop-wallpaper"
-            src="/imgs/backgrounds/numbat_wallpaper_color_1920x1080.png"
+            src="imgs/backgrounds/numbat_wallpaper_color_1920x1080.png"
             alt="Ubuntu 24.04 LTS Noble Numbat Wallpaper"
             quality={90}
             fill
