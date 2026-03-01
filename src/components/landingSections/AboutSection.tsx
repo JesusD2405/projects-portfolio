@@ -30,19 +30,19 @@ function FadeIn({
   delay?: number;
   className?: string;
 }) {
-  const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), delay);
+    const t = setTimeout(() => setMounted(true), delay);
     return () => clearTimeout(t);
   }, [delay]);
+
+  if (!mounted) return null;
+
   return (
     <span
-      className={className}
-      style={{
-        display: "block",
-        opacity: visible ? 1 : 0,
-        transition: "opacity 0.22s ease",
-      }}
+      className={`fade-in-row ${className || ""}`}
+      style={{ display: "block" }}
     >
       {children}
     </span>

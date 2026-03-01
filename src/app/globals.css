@@ -570,6 +570,21 @@ body {
   }
 }
 
+.fade-in-row {
+  animation: fadeInRow 0.25s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .terminal-info {
   margin-top: 16px;
   line-height: 2;
