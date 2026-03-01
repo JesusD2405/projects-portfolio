@@ -35,7 +35,7 @@ const DesktopWindow: FC<DesktopWindowProps> = ({
           </button>
           <button
             className="window-btn window-btn-minimize"
-            onClick={() => {}}
+            onClick={onClose}
             title="Minimize"
           >
             <Minus size={10} />
