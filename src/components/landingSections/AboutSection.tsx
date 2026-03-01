@@ -5,18 +5,11 @@ import profileData from "@/helpers/profile-data";
 import { TypingAnimation } from "@/components/core/terminal/animated-terminal";
 
 /* ─────────────────────────────────────────────────────────────────
-   Timing constants (ms)
+   Timing constants base values
 ───────────────────────────────────────────────────────────────── */
-// chars × ms-per-char  +  buffer
 const NEOFETCH_CMD = "jesusdavid@ubuntu:~$ neofetch"; // prompt + cmd → full length for timing
 const CAT_CMD = " cat social-links.txt"; // only the animated part (14 chars)
-
-const T_CMD1_DONE = NEOFETCH_CMD.length * 35 + 150; // ~1200ms
-const T_INFO_STEP = 160; // delay between each info row
 const T_INFO_ITEMS = 11; // title + sep + 7 rows + sep + about
-const T_INFO_DONE = T_CMD1_DONE + T_INFO_ITEMS * T_INFO_STEP + 400; // last row + buffer
-const T_CMD2_DONE = T_INFO_DONE + CAT_CMD.length * 35 + 150; // cat command done
-const T_LINKS_SHOW = T_CMD2_DONE + 80;
 
 /* ─────────────────────────────────────────────────────────────────
    FadeIn helper — appears after `delay` ms from mount
@@ -183,6 +176,11 @@ function buildInfoRows(langs: string) {
 ───────────────────────────────────────────────────────────────── */
 export function AboutSection() {
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [animConfig, setAnimConfig] = useState({
+    msPerChar: 65,
+    infoStep: 550,
+  });
+
   /** Anchor element at the bottom of the terminal — used for auto-scroll on mobile */
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -194,10 +192,21 @@ export function AboutSection() {
 
   /* ── Animation phase sequencing ─────────────────────────────── */
   useEffect(() => {
+    // Slower, more readable animation timings globally
+    const msPerChar = 65;
+    const infoStep = 550;
+
+    setAnimConfig({ msPerChar, infoStep });
+
+    const cmd1Done = NEOFETCH_CMD.length * msPerChar + 150;
+    const infoDone = cmd1Done + T_INFO_ITEMS * infoStep + 800;
+    const cmd2Done = infoDone + CAT_CMD.length * msPerChar + 150;
+    const linksShow = cmd2Done + 80;
+
     setPhase(1);
-    const t2 = setTimeout(() => setPhase(2), T_CMD1_DONE);
-    const t3 = setTimeout(() => setPhase(3), T_INFO_DONE);
-    const t4 = setTimeout(() => setPhase(4), T_LINKS_SHOW);
+    const t2 = setTimeout(() => setPhase(2), cmd1Done);
+    const t3 = setTimeout(() => setPhase(3), infoDone);
+    const t4 = setTimeout(() => setPhase(4), linksShow);
     return () => {
       clearTimeout(t2);
       clearTimeout(t3);
@@ -237,7 +246,10 @@ export function AboutSection() {
       <div className="terminal-header">
         <span className="terminal-prompt">jesusdavid@ubuntu:~$</span>
         {phase >= 1 && (
-          <TypingAnimation duration={35} className="terminal-cmd">
+          <TypingAnimation
+            duration={animConfig.msPerChar}
+            className="terminal-cmd"
+          >
             {" neofetch"}
           </TypingAnimation>
         )}
@@ -255,7 +267,7 @@ export function AboutSection() {
             {/* Right: info rows fade in one by one */}
             <div className="neofetch-info">
               {infoRows.map((row, i) => {
-                const delay = i * T_INFO_STEP;
+                const delay = i * animConfig.infoStep;
                 if (row.type === "sep") {
                   return (
                     <FadeIn
@@ -289,7 +301,10 @@ export function AboutSection() {
       {phase >= 3 && (
         <div className="terminal-header about-cmd-header">
           <span className="terminal-prompt">jesusdavid@ubuntu:~$</span>
-          <TypingAnimation duration={35} className="terminal-cmd">
+          <TypingAnimation
+            duration={animConfig.msPerChar}
+            className="terminal-cmd"
+          >
             {CAT_CMD}
           </TypingAnimation>
         </div>

@@ -984,11 +984,17 @@ body {
   font-size: 15px;
   font-weight: 600;
   margin: 0;
+  display: flex;
+  align-items: center;
+  align-content: center !important;
 }
 
 .timeline-company {
   color: var(--ubuntu-text-muted);
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  align-content: center !important;
 }
 
 .timeline-header-right {
@@ -1041,6 +1047,293 @@ body {
   font-size: 13px;
   line-height: 1.6;
   margin: 0 0 12px 0;
+}
+
+/* --- Experience Projects Cards --- */
+.exp-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.exp-project-card {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.exp-project-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.exp-project-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+}
+
+.exp-project-title {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* --- Experience Project Modal --- */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.project-modal-content {
+  background: var(--ubuntu-window-bg);
+  border: 1px solid var(--ubuntu-window-border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  padding: 24px;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: modalSlideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  z-index: 10;
+}
+
+.project-modal-close:hover {
+  background: var(--ubuntu-orange);
+  transform: rotate(90deg);
+}
+
+.project-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  padding-right: 40px;
+}
+
+.project-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-carousel-media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: mediaFadeIn 0.4s ease;
+}
+
+@keyframes mediaFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.carousel-btn:hover:not(.disabled) {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-btn-prev {
+  left: 12px;
+}
+.carousel-btn-next {
+  right: 12px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+
+.carousel-dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+.project-modal-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.fallback-favicon {
+  object-fit: contain;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.fallback-modal-carousel {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallback-favicon-modal {
+  width: 128px !important;
+  height: 128px !important;
+  object-fit: contain;
+  animation: modalSlideUp 0.4s ease forwards;
+}
+
+.project-modal-link-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ubuntu-orange);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.project-modal-link-btn:hover {
+  transform: translateY(-2px);
+  background: #ff5f30;
+  box-shadow: 0 4px 12px rgba(233, 84, 32, 0.3);
 }
 
 /* ===================== ANIMATED SKILLS DASHBOARD ===================== */
@@ -1347,6 +1640,8 @@ body {
 
   .dock-items {
     flex-direction: row;
+    gap: 12px !important;
+    margin-bottom: 12px;
   }
 
   .dock-separator {
