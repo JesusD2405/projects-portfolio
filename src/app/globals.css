@@ -6,19 +6,19 @@
   /* Ubuntu - Colour Palette | Ref: https://design.ubuntu.com/brand/colour-palette */
   --ubuntu-panel: rgba(44, 44, 44, 0.92);
   --ubuntu-dock: rgba(30, 30, 30, 0.85);
-  --ubuntu-orange: #E95420;
-  --ubuntu-aubergine: #300A24;
-  --ubuntu-dark-aubergine: #2C001E;
-  --ubuntu-light-aubergine: #77216F;
-  --ubuntu-mid-aubergine: #5E2750;
+  --ubuntu-orange: #e95420;
+  --ubuntu-aubergine: #300a24;
+  --ubuntu-dark-aubergine: #2c001e;
+  --ubuntu-light-aubergine: #77216f;
+  --ubuntu-mid-aubergine: #5e2750;
   --ubuntu-window-bg: #2b2b2b;
   --ubuntu-window-titlebar: #303030;
   --ubuntu-window-border: rgba(255, 255, 255, 0.08);
   --ubuntu-text: #f0f0f0;
   --ubuntu-text-muted: #999999;
-  --ubuntu-terminal-bg: #300A24;
+  --ubuntu-terminal-bg: #300a24;
   --ubuntu-terminal-text: #ffffff;
-  --ubuntu-btn-close: #E95420;
+  --ubuntu-btn-close: #e95420;
   --ubuntu-btn-minimize: #f5c211;
   --ubuntu-btn-maximize: #49c949;
 }
@@ -29,75 +29,75 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   /* Cool Grey */
-  --color-warm-grey: #2C2C2C;
+  --color-warm-grey: #2c2c2c;
   --color-cool-grey: #333333;
   --color-text-grey: #111111;
   /* Ubuntu Orange */
-  --color-ubuntu-orange-950: #E95420;
-  --color-ubuntu-orange-900: #EB6536;
-  --color-ubuntu-orange-800: #ED764D;
-  --color-ubuntu-orange-700: #F08763;
-  --color-ubuntu-orange-600: #F29879;
-  --color-ubuntu-orange-500: #F4AA90;
-  --color-ubuntu-orange-400: #F6BBA6;
-  --color-ubuntu-orange-300: #F8CCBC;
-  --color-ubuntu-orange-200: #FBDDD2;
-  --color-ubuntu-orange-100: #FDEEE9;
+  --color-ubuntu-orange-950: #e95420;
+  --color-ubuntu-orange-900: #eb6536;
+  --color-ubuntu-orange-800: #ed764d;
+  --color-ubuntu-orange-700: #f08763;
+  --color-ubuntu-orange-600: #f29879;
+  --color-ubuntu-orange-500: #f4aa90;
+  --color-ubuntu-orange-400: #f6bba6;
+  --color-ubuntu-orange-300: #f8ccbc;
+  --color-ubuntu-orange-200: #fbddd2;
+  --color-ubuntu-orange-100: #fdeee9;
   /* Canonical Aubergine */
   --color-canonical-aubergine-950: #772953;
-  --color-canonical-aubergine-900: #843E64;
+  --color-canonical-aubergine-900: #843e64;
   --color-canonical-aubergine-800: #925375;
-  --color-canonical-aubergine-700: #9F6986;
-  --color-canonical-aubergine-600: #AD7E97;
-  --color-canonical-aubergine-500: #BB94A9;
-  --color-canonical-aubergine-400: #C8A9BA;
-  --color-canonical-aubergine-300: #D6BECB;
-  --color-canonical-aubergine-200: #E3D4DC;
-  --color-canonical-aubergine-100: #F1E9ED;
+  --color-canonical-aubergine-700: #9f6986;
+  --color-canonical-aubergine-600: #ad7e97;
+  --color-canonical-aubergine-500: #bb94a9;
+  --color-canonical-aubergine-400: #c8a9ba;
+  --color-canonical-aubergine-300: #d6becb;
+  --color-canonical-aubergine-200: #e3d4dc;
+  --color-canonical-aubergine-100: #f1e9ed;
   /* Light Aubergine */
-  --color-ligth-aubergine-950: #77216F;
-  --color-ligth-aubergine-900: #84377D;
-  --color-ligth-aubergine-800: #924D8B;
-  --color-ligth-aubergine-700: #9F639A;
-  --color-ligth-aubergine-600: #AD79A8;
-  --color-ligth-aubergine-500: #BB90B7;
-  --color-ligth-aubergine-400: #C8A6C5;
-  --color-ligth-aubergine-300: #D6BCD3;
-  --color-ligth-aubergine-200: #E3D2E2;
-  --color-ligth-aubergine-100: #F1E8F0;
+  --color-ligth-aubergine-950: #77216f;
+  --color-ligth-aubergine-900: #84377d;
+  --color-ligth-aubergine-800: #924d8b;
+  --color-ligth-aubergine-700: #9f639a;
+  --color-ligth-aubergine-600: #ad79a8;
+  --color-ligth-aubergine-500: #bb90b7;
+  --color-ligth-aubergine-400: #c8a6c5;
+  --color-ligth-aubergine-300: #d6bcd3;
+  --color-ligth-aubergine-200: #e3d2e2;
+  --color-ligth-aubergine-100: #f1e8f0;
   /* Mid Aubergine */
-  --color-mid-aubergine-950: #5E2750;
-  --color-mid-aubergine-900: #6E3C61;
-  --color-mid-aubergine-800: #7E5273;
-  --color-mid-aubergine-700: #8E6784;
-  --color-mid-aubergine-600: #9E7D96;
-  --color-mid-aubergine-500: #AE93A7;
-  --color-mid-aubergine-400: #BEA8B9;
-  --color-mid-aubergine-300: #CEBECA;
-  --color-mid-aubergine-200: #DED3DC;
-  --color-mid-aubergine-100: #EEE9ED;
+  --color-mid-aubergine-950: #5e2750;
+  --color-mid-aubergine-900: #6e3c61;
+  --color-mid-aubergine-800: #7e5273;
+  --color-mid-aubergine-700: #8e6784;
+  --color-mid-aubergine-600: #9e7d96;
+  --color-mid-aubergine-500: #ae93a7;
+  --color-mid-aubergine-400: #bea8b9;
+  --color-mid-aubergine-300: #cebeca;
+  --color-mid-aubergine-200: #ded3dc;
+  --color-mid-aubergine-100: #eee9ed;
   /* Dark Aubergine */
-  --color-dark-aubergine-950: #2C001E;
+  --color-dark-aubergine-950: #2c001e;
   --color-dark-aubergine-900: #411934;
-  --color-dark-aubergine-800: #56334B;
-  --color-dark-aubergine-700: #6B4C61;
+  --color-dark-aubergine-800: #56334b;
+  --color-dark-aubergine-700: #6b4c61;
   --color-dark-aubergine-600: #806678;
-  --color-dark-aubergine-500: #957F8E;
-  --color-dark-aubergine-400: #AA99A5;
-  --color-dark-aubergine-300: #BFB2BB;
-  --color-dark-aubergine-200: #D4CCD2;
-  --color-dark-aubergine-100: #E9E5E8;
+  --color-dark-aubergine-500: #957f8e;
+  --color-dark-aubergine-400: #aa99a5;
+  --color-dark-aubergine-300: #bfb2bb;
+  --color-dark-aubergine-200: #d4ccd2;
+  --color-dark-aubergine-100: #e9e5e8;
   /* Warm Grey */
-  --color-warm-grey-950: #AEA79F;
-  --color-warm-grey-900: #B6AFA8;
-  --color-warm-grey-800: #BEB8B2;
-  --color-warm-grey-700: #C6C1BB;
-  --color-warm-grey-600: #CECAC5;
-  --color-warm-grey-500: #D6D3CF;
-  --color-warm-grey-400: #DEDBD8;
-  --color-warm-grey-300: #E6E4E2;
-  --color-warm-grey-200: #EEEDEB;
-  --color-warm-grey-100: #F6F6F5;
+  --color-warm-grey-950: #aea79f;
+  --color-warm-grey-900: #b6afa8;
+  --color-warm-grey-800: #beb8b2;
+  --color-warm-grey-700: #c6c1bb;
+  --color-warm-grey-600: #cecac5;
+  --color-warm-grey-500: #d6d3cf;
+  --color-warm-grey-400: #dedbd8;
+  --color-warm-grey-300: #e6e4e2;
+  --color-warm-grey-200: #eeedeb;
+  --color-warm-grey-100: #f6f6f5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -325,7 +325,9 @@ body {
 }
 
 .dock-icon-btn.dock-icon-active {
-  box-shadow: 0 0 0 2px var(--ubuntu-orange), 0 4px 12px rgba(233, 84, 32, 0.3);
+  box-shadow:
+    0 0 0 2px var(--ubuntu-orange),
+    0 4px 12px rgba(233, 84, 32, 0.3);
 }
 
 .dock-icon-svg {
@@ -365,7 +367,9 @@ body {
   background: var(--ubuntu-window-bg);
   border-radius: 12px;
   border: 1px solid var(--ubuntu-window-border);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -500,7 +504,7 @@ body {
 }
 
 .terminal-prompt {
-  color: #4CE94C;
+  color: #4ce94c;
   font-weight: 700;
 }
 
@@ -509,7 +513,7 @@ body {
 }
 
 .terminal-cursor {
-  color: #4CE94C;
+  color: #4ce94c;
   animation: blink 1s step-end infinite;
 }
 
@@ -530,13 +534,64 @@ body {
   margin: 0;
 }
 
+/* ASCII art fade-in when neofetch output mounts */
+.about-ascii-fade {
+  animation: asciiReveal 0.4s ease forwards;
+}
+
+@keyframes asciiReveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ubuntu logo SVG in neofetch panel */
+.ubuntu-logo-svg {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(233, 84, 32, 0.45));
+  animation: logoFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.fade-in-row {
+  animation: fadeInRow 0.25s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .terminal-info {
   margin-top: 16px;
   line-height: 2;
 }
 
 .terminal-key {
-  color: #87CEEB;
+  color: #87ceeb;
   font-weight: 600;
 }
 
@@ -544,6 +599,7 @@ body {
   display: flex;
   gap: 16px;
   margin-top: 12px;
+  justify-content: center;
 }
 
 .terminal-links a {
@@ -596,6 +652,52 @@ body {
   font-style: italic;
   margin-top: 4px;
   line-height: 1.5;
+}
+
+/* Neofetch value text */
+.neofetch-value {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Color palette strip */
+.neofetch-colors {
+  display: flex !important;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.color-dot {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* About section tweaks */
+.about-terminal-section {
+  padding: 24px 28px;
+}
+
+.about-cmd-header {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.terminal-prompt-line {
+  color: #f0f0f0;
+  font-family: "Ubuntu Mono", "Geist Mono", monospace;
+}
+
+.terminal-prompt-line::before {
+  content: "";
+}
+
+/* Ensure animated terminal items have proper line height */
+.terminal-animated-root > span {
+  line-height: 1.85;
+  font-size: 13px;
 }
 
 /* ===================== FILE MANAGER SECTION ===================== */
@@ -827,7 +929,11 @@ body {
 .timeline-line {
   width: 2px;
   flex: 1;
-  background: linear-gradient(180deg, rgba(233, 84, 32, 0.4), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(
+    180deg,
+    rgba(233, 84, 32, 0.4),
+    rgba(255, 255, 255, 0.08)
+  );
   margin: 4px 0;
 }
 
@@ -838,7 +944,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .timeline-item-expanded .timeline-content {
@@ -876,11 +984,17 @@ body {
   font-size: 15px;
   font-weight: 600;
   margin: 0;
+  display: flex;
+  align-items: center;
+  align-content: center !important;
 }
 
 .timeline-company {
   color: var(--ubuntu-text-muted);
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  align-content: center !important;
 }
 
 .timeline-header-right {
@@ -914,9 +1028,10 @@ body {
 .timeline-detail {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s ease;
+  transition:
+    max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
   opacity: 0;
   padding: 0 16px;
 }
@@ -932,6 +1047,293 @@ body {
   font-size: 13px;
   line-height: 1.6;
   margin: 0 0 12px 0;
+}
+
+/* --- Experience Projects Cards --- */
+.exp-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.exp-project-card {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.exp-project-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.exp-project-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+}
+
+.exp-project-title {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* --- Experience Project Modal --- */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.project-modal-content {
+  background: var(--ubuntu-window-bg);
+  border: 1px solid var(--ubuntu-window-border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  padding: 24px;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: modalSlideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  z-index: 10;
+}
+
+.project-modal-close:hover {
+  background: var(--ubuntu-orange);
+  transform: rotate(90deg);
+}
+
+.project-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  padding-right: 40px;
+}
+
+.project-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-carousel-media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: mediaFadeIn 0.4s ease;
+}
+
+@keyframes mediaFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.carousel-btn:hover:not(.disabled) {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-btn-prev {
+  left: 12px;
+}
+.carousel-btn-next {
+  right: 12px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition:
+    background 0.3s,
+    transform 0.3s;
+}
+
+.carousel-dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+.project-modal-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.fallback-favicon {
+  object-fit: contain;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.fallback-modal-carousel {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallback-favicon-modal {
+  width: 128px !important;
+  height: 128px !important;
+  object-fit: contain;
+  animation: modalSlideUp 0.4s ease forwards;
+}
+
+.project-modal-link-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ubuntu-orange);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.project-modal-link-btn:hover {
+  transform: translateY(-2px);
+  background: #ff5f30;
+  box-shadow: 0 4px 12px rgba(233, 84, 32, 0.3);
 }
 
 /* ===================== ANIMATED SKILLS DASHBOARD ===================== */
@@ -1238,6 +1640,8 @@ body {
 
   .dock-items {
     flex-direction: row;
+    gap: 12px !important;
+    margin-bottom: 12px;
   }
 
   .dock-separator {
@@ -1471,4 +1875,3 @@ body {
     height: 10px;
   }
 }
-
