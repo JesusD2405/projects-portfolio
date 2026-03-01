@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import profileData from "@/helpers/profile-data";
 import { TypingAnimation } from "@/components/core/terminal/animated-terminal";
@@ -183,6 +183,8 @@ function buildInfoRows(langs: string) {
 ───────────────────────────────────────────────────────────────── */
 export function AboutSection() {
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4>(0);
+  /** Anchor element at the bottom of the terminal — used for auto-scroll on mobile */
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const langs = profileData.languages
     .map((l) => `${l.language} (${l.proficiency})`)
@@ -190,25 +192,44 @@ export function AboutSection() {
 
   const infoRows = buildInfoRows(langs);
 
+  /* ── Animation phase sequencing ─────────────────────────────── */
   useEffect(() => {
-    // Phase 1 — start immediately (the neofetch TypingAnimation mounts & types)
     setPhase(1);
-
-    // Phase 2 — neofetch command finished → show output + logo + info rows
     const t2 = setTimeout(() => setPhase(2), T_CMD1_DONE);
-
-    // Phase 3 — info rows done → cat links.txt command starts typing
     const t3 = setTimeout(() => setPhase(3), T_INFO_DONE);
-
-    // Phase 4 — cat command done → show link pills + cursor
     const t4 = setTimeout(() => setPhase(4), T_LINKS_SHOW);
-
     return () => {
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
     };
   }, []);
+
+  /* ── Auto-scroll to bottom on mobile during animation ── */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (!isMobile || !bottomRef.current) return;
+
+    let interval: ReturnType<typeof setInterval>;
+
+    // While animation is playing, continuously scroll down
+    // so the viewport follows the typing/fade-in content.
+    if (phase > 0 && phase < 4) {
+      interval = setInterval(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+      }, 200);
+    } else if (phase === 4) {
+      // One final scroll when everything finishes
+      setTimeout(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+      }, 200);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [phase]);
 
   return (
     <div className="terminal-section about-terminal-section">
@@ -303,6 +324,9 @@ export function AboutSection() {
           </div>
         </>
       )}
+
+      {/* Scroll anchor — keeps bottom visible on mobile during animation */}
+      <div ref={bottomRef} aria-hidden />
     </div>
   );
 }
