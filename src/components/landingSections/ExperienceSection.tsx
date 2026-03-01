@@ -109,18 +109,21 @@ export function ExperienceSection() {
   };
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     if (Math.abs(e.deltaY) > 20) {
       handleNav(e.deltaY, e);
     }
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     if (!selectedProject) {
       touchStartRef.current = e.touches[0].clientY;
     }
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     if (touchStartRef.current === null || selectedProject !== null) return;
     const deltaY = touchStartRef.current - e.touches[0].clientY;
 
@@ -132,6 +135,7 @@ export function ExperienceSection() {
   };
 
   const handleTouchEnd = () => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return;
     touchStartRef.current = null;
   };
 
