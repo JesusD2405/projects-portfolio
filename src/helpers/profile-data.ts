@@ -49,6 +49,15 @@ export interface SkillCategory {
   skills: { name: string; level: number }[];
 }
 
+export interface NotificationItem {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+  image?: string;
+  read: boolean;
+}
+
 export interface ProfileData {
   name: string;
   headline: string;
@@ -63,6 +72,7 @@ export interface ProfileData {
   education: Education[];
   projects: Project[];
   skills: SkillCategory[];
+  notifications: NotificationItem[];
 }
 
 const profileData: ProfileData = {
@@ -85,7 +95,7 @@ const profileData: ProfileData = {
       company: "Orsys Consulting, Inc.",
       role: "Full Stack Developer",
       period: "Nov 2023 – Presente",
-      location: "Remoto — Puerto Rico",
+      location: "Remoto — San Juan, Puerto Rico",
       description:
         "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js 14.<br>- Manejo de Redux Toolkit y Tailwind CSS.<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
       tech: ["Next.js 14", "PHP", "Oracle DB", "Redux Toolkit", "Tailwind CSS"],
@@ -93,7 +103,8 @@ const profileData: ProfileData = {
         {
           title: "Dorado - Gestión Municipal",
           url: "https://dorado.gestionmunicipalpr.com/",
-          description: "",
+          description:
+            "es una herramienta de gestión municipal que busca transparentar y agilizar el proceso relacionado con propiedades abandonadas o en condiciones peligrosas, permitiendo a los ciudadanos reportarlas y darles seguimiento.",
           media: [],
         },
       ],
@@ -192,7 +203,7 @@ const profileData: ProfileData = {
       company: "Trigo Technologies",
       role: "Full Stack Developer",
       period: "Jun 2020 – Dic 2021",
-      location: "Ciudad Guayana, Venezuela",
+      location: "Remoto - Santiago, Chile",
       description:
         "Web Developer Full-Stack Js bajo los frameworks Angular, Electron y Nest. Patrón de diseño y desarrollo bajo Clean Architecture y Clean Code. Base de Datos NoSQL MongoDB y servicios en Firebase.",
       tech: ["Angular", "Electron", "Nest", "MongoDB", "Firebase"],
@@ -303,6 +314,18 @@ const profileData: ProfileData = {
         { name: "Git", level: 95 },
         { name: "CI/CD Pipelines", level: 90 },
       ],
+    },
+  ],
+
+  notifications: [
+    {
+      id: "update-1",
+      title: "¡Actualización en Progreso! 🛠️",
+      description:
+        "En estos momentos, se siguen actualizando experiencias y proyectos para ofrecerte la versión más reciente del portafolio.",
+      time: "Justo ahora",
+      image: "https://cdn-icons-png.flaticon.com/512/3233/3233483.png",
+      read: false,
     },
   ],
 };

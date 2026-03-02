@@ -1,14 +1,28 @@
 "use client";
 import { FC, useEffect, useState } from "react";
 // Components
-import { Button, Group, Menu, Portal } from "@chakra-ui/react";
-import { EmptyState, VStack } from "@chakra-ui/react";
-import { BellOff } from "lucide-react";
+import {
+  Button,
+  Group,
+  Menu,
+  Portal,
+  Box,
+  Image,
+  Text,
+  HStack,
+  VStack,
+  EmptyState,
+} from "@chakra-ui/react";
+import { BellOff, Bell } from "lucide-react";
+import profileData from "@/helpers/profile-data";
 
 const Notification: FC = () => {
   const [mounted, setMounted] = useState(false);
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const notifications = profileData.notifications || [];
 
   const getCurrentDateFormat = () => {
     const date1 = new Date();
@@ -48,8 +62,27 @@ const Notification: FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (mounted && notifications.length > 0) {
+      // Show menu after a delay
+      const openTimer = setTimeout(() => {
+        setIsOpen(true);
+      }, 1000);
+
+      // Automatically close the menu after a few seconds
+      const closeTimer = setTimeout(() => {
+        setIsOpen(false);
+      }, 6000);
+
+      return () => {
+        clearTimeout(openTimer);
+        clearTimeout(closeTimer);
+      };
+    }
+  }, [mounted, notifications.length]);
+
   return (
-    <Menu.Root>
+    <Menu.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
       <Menu.Trigger asChild>
         <Button variant="outline" size="sm" suppressHydrationWarning>
           {mounted && currentDate && currentTime ? (
@@ -58,7 +91,9 @@ const Notification: FC = () => {
               <span className="uppercase">{currentTime}</span>
             </>
           ) : (
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
           )}
         </Button>
       </Menu.Trigger>
@@ -67,20 +102,67 @@ const Notification: FC = () => {
           <Menu.Content>
             <Group grow gap="0">
               {/* Listado de Notificaciones */}
-              <Menu.Item value="new-txt">
-                <EmptyState.Root>
-                  <EmptyState.Content>
-                    <EmptyState.Indicator>
-                      <BellOff />
-                    </EmptyState.Indicator>
-                    <VStack textAlign="center">
-                      <EmptyState.Title>No hay notificaciones</EmptyState.Title>
-                    </VStack>
-                  </EmptyState.Content>
-                </EmptyState.Root>
-              </Menu.Item>
-              {/* Calendario */}
-              <Menu.Item value="calendar"></Menu.Item>
+              {notifications.length === 0 ? (
+                <Menu.Item value="empty">
+                  <EmptyState.Root p={4}>
+                    <EmptyState.Content>
+                      <EmptyState.Indicator>
+                        <BellOff />
+                      </EmptyState.Indicator>
+                      <VStack textAlign="center">
+                        <EmptyState.Title>
+                          No hay notificaciones
+                        </EmptyState.Title>
+                      </VStack>
+                    </EmptyState.Content>
+                  </EmptyState.Root>
+                </Menu.Item>
+              ) : (
+                <VStack gap={0} p={2} maxW="350px">
+                  {notifications.map((notif) => (
+                    <Menu.Item
+                      key={notif.id}
+                      value={notif.id}
+                      p={2}
+                      borderRadius="md"
+                      _hover={{ bg: "bg.muted" }}
+                      w="full"
+                    >
+                      <HStack align="flex-start" gap={3}>
+                        {notif.image ? (
+                          <Image
+                            src={notif.image}
+                            alt="icon"
+                            boxSize="40px"
+                            borderRadius="md"
+                            objectFit="cover"
+                          />
+                        ) : (
+                          <Box bg="orange.500" p={2} borderRadius="md">
+                            <Bell size={24} color="white" />
+                          </Box>
+                        )}
+                        <VStack align="flex-start" gap={1} flex={1}>
+                          <Text
+                            fontWeight="bold"
+                            fontSize="sm"
+                            mt={0}
+                            lineHeight={1}
+                          >
+                            {notif.title}
+                          </Text>
+                          <Text fontSize="xs" color="fg.muted" lineClamp={3}>
+                            {notif.description}
+                          </Text>
+                          <Text fontSize="2xs" color="fg.subtle">
+                            {notif.time}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                    </Menu.Item>
+                  ))}
+                </VStack>
+              )}
             </Group>
           </Menu.Content>
         </Menu.Positioner>

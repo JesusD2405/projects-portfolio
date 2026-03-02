@@ -1,63 +1,118 @@
-# Projects Portfolio
+# 🐧 Ubuntu 24.04 LTS Portfolio
 
-_Proyecto en Next.Js v15, que contiene el desarrollo de una Landing Page de tipo Portafolio para proyectos de desarrollo de software_
+<div align="center">
+  <img src="public/imgs/og/og-image.png" alt="Ubuntu Portfolio Banner" width="800">
+  <p><i>Un portafolio web moderno y dinámico inspirado en la interfaz de usuario de Ubuntu 24.04 LTS (Noble Numbat).</i></p>
+</div>
 
-## Comenzando 🚀
+---
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+## 🌟 Descripción
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+Este proyecto es una **Landing Page de tipo Portafolio** desarrollada con **Next.js 15+** y **Chakra UI v3**. La interfaz emula un entorno de escritorio **GNOME** completo, proporcionando una experiencia de usuario única e interactiva que refleja mi perfil como desarrollador apasionado por el ecosistema Linux y el desarrollo web.
+
+## ✨ Características Principales
+
+- 🎨 **Interfaz Ubuntu 24.04**: Réplica fiel del diseño de Noble Numbat con bordes redondeados y tipografía Ubuntu.
+- 💻 **GNOME Desktop Emulation**:
+  - **Top Bar**: Con reloj funcional, indicadores de estado y controles.
+  - **Dock (Ubuntu Launcher)**: Barra lateral interactiva para navegación rápida entre secciones.
+  - **Gestión de Ventanas**: Secciones del portafolio que se abren como ventanas de escritorio con controles de maximizar/minimizar.
+- 🐚 **Terminal Animada**: Un componente de terminal interactivo que simula la ejecución de comandos para presentar información técnica.
+- 📱 **Diseño Responsive**: Optimizado para dispositivos móviles, tablets y escritorio.
+- 🔍 **SEO de Alto Nivel**: Implementación de metadatos, Open Graph, Twitter Cards y generación dinámica de `sitemap.xml` y `robots.txt`.
+
+## 🚀 Comenzando
 
 ### Pre-requisitos 📋
 
-1. [Docker](https://www.docker.com/)
+- **Node.js**: v18 o superior (recomendado v20+).
+- **Docker**: Opcional, para ejecución en contenedores.
+- **NPM / PNPM / Bun**: Gestor de paquetes.
 
-_Es importante tener instaladas las herramientas anteriormente mencionadas para iniciar los siguientes pasos._
+### Instalación Local 🔧
 
-## Instalación 🔧
+1. **Clonar el repositorio:**
 
-_*** Preparando nuestras variables de entorno ***_
+   ```bash
+   git clone https://github.com/JesusD2405/projects-portfolio.git
+   cd projects-portfolio
+   ```
 
-_Nos situamos en la raíz y hacemos una copia del archivo .env_
+2. **Preparar el entorno:**
 
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Instalar dependencias:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Ejecutar en desarrollo:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Accede a [http://localhost:3000/projects-portfolio/](http://localhost:3000/projects-portfolio/).
+
+### Ejecución con Docker 🐳
+
+Si prefieres usar Docker para un entorno aislado:
+
+```bash
+docker compose up --build
 ```
- cp .env.example .env
-```
 
-_En nuestro nuevo archivo .env modificamos y adaptamos las variables de entorno del Docker_
-
-_Finalmente, en la raíz del proyecto ejecutamos_
-
-```
- docker compose up --build
-```
-
-_De esta manera tendríamos todos nuestros conenedores levantados._
-
-## Despliegue 📦
-
-_*** Preparando nuestras variables de entorno ***_
-
-_Nos situamos en la raíz y hacemos una copia del archivo .env_
-
-```
- cp .env.example .env
-```
-
-_En nuestro nuevo archivo .env modificamos y adaptamos las variables de entorno del Docker_
-
-_Finalmente, en la raíz del proyecto ejecutamos_
-
-```
- docker compose up --build
-```
-
-## Construido con 🛠️
-
-_Herramientas utilizadas en el proyecto:_
-
-- [Docker](https://docs.docker.com/compose/install/) - Es una tecnología de contenedorización de código abierto para crear y contener sus aplicaciones.
-- [Next.js](https://nextjs.org/docs) - Next.js es un marco web de desarrollo front-end de React de código abierto creado por Vercel que habilita funcionalidades como la representación del lado del servidor y la generación de sitios web estáticos para aplicaciones web basadas en React.
 ---
 
-Desarrollado por [Jesús David Pérez](https://github.com/JesusD2405) ❤️🚀
+## 🛠️ Construido con
+
+- **[Next.js](https://nextjs.org/)** - Framework de React para producción.
+- **[Chakra UI v3](https://chakra-ui.com/)** - Librería de componentes para estilado premium.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utilidades de CSS para diseño rápido.
+- **[Framer Motion](https://www.framer.com/motion/)** - Motor de animaciones para transiciones fluidas.
+- **[Lucide React](https://lucide.dev/)** - Iconografía moderna y consistente.
+- **[Aceternity UI](https://ui.aceternity.com/)** - Componentes de UI avanzados y elegantes.
+
+---
+
+## 📁 Estructura del Proyecto
+
+```text
+src/
+├── app/                  # Directorio de rutas de Next.js (App Router)
+├── components/           # Componentes atómicos y de UI
+│   ├── chakra-ui/       # Proveedores y componentes base de Chakra
+│   ├── core/            # Componentes del sistema (Dock, Navbar, Window)
+│   └── landingSections/ # Secciones de contenido (About, Experience, etc.)
+├── helpers/              # Datos estáticos (profile-data.ts) y rutas
+├── libs/                 # Librerías externas y utilidades
+└── public/               # Assets estáticos (imágenes, iconos, PWA manifest)
+```
+
+## ⚙️ Configuración de Datos
+
+Para actualizar la información del portafolio (experiencia, educación, proyectos), simplemente modifica el archivo:
+`src/helpers/profile-data.ts`
+
+Los cambios se reflejarán automáticamente en toda la aplicación.
+
+---
+
+## 📦 Despliegue
+
+El proyecto está configurado para desplegarse automáticamente en **GitHub Pages** mediante GitHub Actions cada vez que se hace push a la rama `master`.
+
+Mira el archivo `.github/workflows/deploy.yml` para más detalles sobre el pipeline de CI/CD.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+Desarrollado con ❤️🚀 por [Jesús David Pérez](https://github.com/JesusD2405)
