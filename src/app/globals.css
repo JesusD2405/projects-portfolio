@@ -648,15 +648,14 @@ body {
 }
 
 .terminal-about {
-  color: rgba(255, 255, 255, 0.7);
-  font-style: italic;
+  color: white;
   margin-top: 4px;
   line-height: 1.5;
 }
 
 /* Neofetch value text */
 .neofetch-value {
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
 }
 
 /* Color palette strip */
@@ -981,7 +980,7 @@ body {
 
 .timeline-role {
   color: var(--ubuntu-text);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   margin: 0;
   display: flex;
@@ -991,7 +990,7 @@ body {
 
 .timeline-company {
   color: var(--ubuntu-text-muted);
-  font-size: 12px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   align-content: center !important;
@@ -1029,7 +1028,7 @@ body {
   max-height: 0;
   overflow: hidden;
   transition:
-    max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.3s ease;
   opacity: 0;
@@ -1037,14 +1036,14 @@ body {
 }
 
 .timeline-detail-open {
-  max-height: 2000px;
+  max-height: 4000px; /* Adaptable a bastante contenido */
   padding: 0 16px 16px;
   opacity: 1;
 }
 
 .timeline-description {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   margin: 0 0 12px 0;
 }
@@ -1737,16 +1736,36 @@ body {
   .timeline-header-btn {
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px;
+    padding: 14px 12px;
+    gap: 12px;
+  }
+
+  .timeline-header-left {
+    width: 100%;
+    word-break: break-word;
   }
 
   .timeline-header-right {
     width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   .timeline-role {
+    font-size: 15px;
+    line-height: 1.4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+  }
+
+  .timeline-company {
     font-size: 13px;
+    line-height: 1.4;
+    margin-top: 6px;
+    display: block;
   }
 
   /* Skills responsive */
