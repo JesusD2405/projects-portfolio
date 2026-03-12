@@ -1,4 +1,4 @@
-"use server";
+
 import { createTransport } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import Hbs from "nodemailer-express-handlebars";

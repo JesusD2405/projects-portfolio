@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  // Exclude server-only Node.js modules from webpack bundling.
+  // These are only used in API routes (server runtime), never on the client.
+  serverExternalPackages: [
+    "nodemailer",
+    "nodemailer-express-handlebars",
+    "express-handlebars",
+    "handlebars",
+  ],
   env: {
     ROOT_EMAIL_TEMPLATES: __dirname + "/src/utils/emails/templates/",
   },

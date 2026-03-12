@@ -1,4 +1,4 @@
-"use server";
+
 import { sendMail } from "../nodemailer";
 
 export type ContactPayload = {
