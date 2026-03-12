@@ -863,6 +863,33 @@ body {
   margin: 0;
 }
 
+.project-card-preview {
+  margin: -20px -20px 14px -20px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: #111;
+}
+
+.project-card-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+  background: white;
+}
+
+.project-card:hover .project-card-preview-img {
+  transform: scale(1.04);
+}
+
+.project-card-preview-img.fallback-favicon {
+  object-fit: contain;
+  padding: 20%;
+  background: rgba(255, 255, 255, 0.04);
+}
+
 /* ===================== EXPERIENCE TIMELINE ===================== */
 .timeline-section {
   padding: 24px 32px;
@@ -986,6 +1013,49 @@ body {
   display: flex;
   align-items: center;
   align-content: center !important;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Company logo avatar */
+.company-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.timeline-header-btn:hover .company-logo-wrap {
+  transform: scale(1.1);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgba(233, 84, 32, 0.35);
+}
+
+.company-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.company-logo-fallback {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .timeline-company {
@@ -1048,7 +1118,94 @@ body {
   margin: 0 0 12px 0;
 }
 
+/* --- Education Cards (timeline variant, always expanded) --- */
+.edu-card {
+  /* Inherits timeline-content but overrides the collapsed state */
+  border-color: rgba(100, 160, 255, 0.18) !important;
+}
+
+.edu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.edu-card-body {
+  padding: 14px 16px 16px;
+}
+
+/* Institution link */
+.edu-institution-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.edu-institution-link:hover {
+  color: var(--ubuntu-orange);
+}
+
+.edu-institution-link-icon {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.edu-institution-link:hover .edu-institution-link-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Blue-tinted active dot for education (vs orange for experience) */
+.edu-card ~ .timeline-track .timeline-dot-active,
+.timeline-section:has(.edu-card) .timeline-dot-active {
+  background: #4a90e2;
+  border-color: #4a90e2;
+  box-shadow: 0 0 14px rgba(74, 144, 226, 0.45);
+}
+
+/* icon-only logo wrap variant (cuando no hay logo, usamos el icono directamente) */
+.company-logo-wrap--icon {
+  background: rgba(74, 144, 226, 0.15);
+  color: #7ab4f5;
+  box-shadow: none;
+}
+
+/* Logo clickeable — hereda company-logo-wrap */
+.company-logo-wrap--link {
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.company-logo-wrap--link:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.35),
+    0 0 0 2px rgba(233, 84, 32, 0.5);
+}
+
+/* Education timeline line subtle blue tint */
+.timeline-section:has(.edu-card) .timeline-line {
+  background: linear-gradient(
+    180deg,
+    rgba(74, 144, 226, 0.45),
+    rgba(255, 255, 255, 0.06)
+  );
+}
+
 /* --- Experience Projects Cards --- */
+
 .exp-projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -1133,7 +1290,7 @@ body {
   border: 1px solid var(--ubuntu-window-border);
   border-radius: 12px;
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   max-height: 90vh;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
   padding: 24px;
@@ -1204,6 +1361,7 @@ body {
   height: 100%;
   object-fit: contain;
   animation: mediaFadeIn 0.4s ease;
+  background: white;
 }
 
 @keyframes mediaFadeIn {
@@ -1281,7 +1439,7 @@ body {
 }
 
 .project-modal-desc {
-  font-size: 14px;
+  font-size: 17px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   white-space: pre-wrap;
@@ -1333,6 +1491,213 @@ body {
   transform: translateY(-2px);
   background: #ff5f30;
   box-shadow: 0 4px 12px rgba(233, 84, 32, 0.3);
+}
+
+/* ── Carousel: cursor pointer + botón fullscreen ── */
+.carousel-media-clickable {
+  cursor: zoom-in;
+}
+
+.carousel-fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    opacity 0.2s;
+  opacity: 0.7;
+}
+
+.project-carousel:hover .carousel-fullscreen-btn {
+  opacity: 1;
+}
+
+.carousel-fullscreen-btn:hover {
+  background: var(--ubuntu-orange);
+  transform: scale(1.1);
+  border-color: transparent;
+}
+
+/* ── Fullscreen Viewer ── */
+.fullscreen-viewer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fullscreenFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fullscreenFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fullscreen-viewer-media-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 60px 80px;
+  box-sizing: border-box;
+}
+
+.fullscreen-viewer-media {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+  animation: fullscreenMediaIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes fullscreenMediaIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fullscreen-viewer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  z-index: 10;
+}
+
+.fullscreen-viewer-close:hover {
+  background: var(--ubuntu-orange);
+  transform: rotate(90deg) scale(1.1);
+  border-color: transparent;
+}
+
+.fullscreen-viewer-counter {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+.fullscreen-viewer-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.fullscreen-viewer-btn-prev {
+  left: 20px;
+}
+.fullscreen-viewer-btn-next {
+  right: 20px;
+}
+
+.fullscreen-viewer-btn:hover:not(.disabled) {
+  background: var(--ubuntu-orange);
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.fullscreen-viewer-btn.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.fullscreen-viewer-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 8px 14px;
+  border-radius: 24px;
+  backdrop-filter: blur(4px);
+}
+
+.fullscreen-viewer-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+}
+
+.fullscreen-viewer-dot.active {
+  background: #fff;
+  transform: scale(1.35);
+}
+
+.fullscreen-viewer-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 /* ===================== ANIMATED SKILLS DASHBOARD ===================== */
@@ -1519,6 +1884,8 @@ body {
 .compose-actions {
   padding: 12px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: center;
 }
 
 .compose-send-btn {
@@ -1536,10 +1903,93 @@ body {
   transition: all 0.2s;
 }
 
-.compose-send-btn:hover {
+.compose-send-btn:hover:not(:disabled) {
   background: #d44915;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(233, 84, 32, 0.35);
+}
+
+.compose-send-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner for loading state */
+@keyframes spinIcon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spinIcon 0.8s linear infinite;
+}
+
+/* Field-level error highlight */
+.compose-field input.field-error,
+.compose-body textarea.field-error {
+  border-color: rgba(229, 57, 57, 0.6) !important;
+  background: rgba(229, 57, 57, 0.05) !important;
+}
+
+.compose-field-error {
+  font-size: 12px;
+  color: #e57373;
+  padding: 4px 16px 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Server-level error banner */
+.compose-server-error {
+  margin: 0 16px 10px;
+  padding: 10px 14px;
+  background: rgba(229, 57, 57, 0.1);
+  border: 1px solid rgba(229, 57, 57, 0.3);
+  border-radius: 8px;
+  color: #ef9a9a;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Success screen */
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 32px;
+  gap: 16px;
+  flex: 1;
+  animation: modalSlideUp 0.4s ease forwards;
+}
+
+.contact-success-icon {
+  color: #66bb6a;
+  filter: drop-shadow(0 0 16px rgba(102, 187, 106, 0.5));
+}
+
+.contact-success h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ubuntu-text);
+  margin: 0;
+}
+
+.contact-success p {
+  font-size: 14px;
+  color: var(--ubuntu-text-muted);
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.6;
 }
 
 .contact-info-sidebar {

@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  env: {
+    ROOT_EMAIL_TEMPLATES: __dirname + "/src/utils/emails/templates/",
+  },
 };
 
 export default nextConfig;
