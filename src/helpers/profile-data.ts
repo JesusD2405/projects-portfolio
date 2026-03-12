@@ -27,14 +27,19 @@ export interface Experience {
   location: string;
   description: string;
   tech: string[];
+  logo?: string; // Optional URL for the company logo
+  link?: string; // Optional URL for the company website
   projects?: ExperienceProject[];
 }
 
 export interface Education {
+  logo?: string; // Optional URL for the company logo
+  preview?: string; // Optional URL for the preview image/gif on the card
   degree: string;
   institution: string;
   period: string;
   description: string;
+  link: string;
 }
 
 export interface Project {
@@ -42,6 +47,8 @@ export interface Project {
   description: string;
   tech: string[];
   link: string;
+  preview?: string; // Optional URL for the preview image/gif on the card
+  media?: ExperienceProjectMedia[]; // Optional array of media for the modal carousel
 }
 
 export interface SkillCategory {
@@ -93,30 +100,87 @@ const profileData: ProfileData = {
   experience: [
     {
       company: "Orsys Consulting, Inc.",
+      logo: "projects/orsys/orsys-logo.png",
+      link: "https://www.orsyspr.com/",
       role: "Full Stack Developer",
       period: "Nov 2023 – Presente",
-      location: "Remoto — San Juan, Puerto Rico",
+      location: "Remoto - San Juan, Puerto Rico 🇵🇷",
       description:
         "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js 14.<br>- Manejo de Redux Toolkit y Tailwind CSS.<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
-      tech: ["Next.js 14", "PHP", "Oracle DB", "Redux Toolkit", "Tailwind CSS"],
+      tech: [
+        "Next.js 14",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "Bootstrap",
+        "Angular.js",
+        "PHP",
+        "Oracle DB",
+      ],
       projects: [
         {
           title: "Dorado - Gestión Municipal",
+          preview: "projects/orsys/dorado-estorbos/dorado-logo-v.svg",
           url: "https://dorado.gestionmunicipalpr.com/",
           description:
-            "es una herramienta de gestión municipal que busca transparentar y agilizar el proceso relacionado con propiedades abandonadas o en condiciones peligrosas, permitiendo a los ciudadanos reportarlas y darles seguimiento.",
+            "Es una website de gestión municipal que busca transparentar y agilizar el proceso relacionado con propiedades abandonadas o en condiciones peligrosas, permitiendo a los ciudadanos reportarlas y darles seguimiento.",
+          media: [
+            {
+              type: "image",
+              url: "projects/orsys/dorado-estorbos/dorado-estorbos-1.png",
+            },
+            {
+              type: "image",
+              url: "projects/orsys/dorado-estorbos/dorado-estorbos-2.png",
+            },
+            {
+              type: "image",
+              url: "projects/orsys/dorado-estorbos/dorado-estorbos-3.png",
+            },
+            {
+              type: "image",
+              url: "projects/orsys/dorado-estorbos/dorado-estorbos-5.png",
+            },
+          ],
+        },
+        {
+          title: "Municipio de San Juan",
+          preview: "projects/orsys/municipio-san-juan.png",
+          url: "",
+          description: "Proyecto internos del municipio de San Juan",
+          media: [],
+        },
+        {
+          title: "Medicaid",
+          preview: "projects/orsys/medicaid-logo.png",
+          url: "https://www.medicaid.pr.gov/",
+          description: "Website del programa Medicaid",
           media: [],
         },
       ],
     },
     {
       company: "Omegasoft C.A.",
+      logo: "projects/omegasoft/omegasoft-logo.jpeg",
+      link: "https://omegasoft.com.ve",
       role: "DevOps Developer",
       period: "Oct 2023 – Jul 2024",
-      location: "Remoto — Caracas, Venezuela",
+      location: "Remoto - Caracas, Venezuela 	🇻🇪",
       description:
         "- Full-Stack Developer bajo frameworks Django Rest Framework y Next.js 14<br>- Manejo de Docker, Redux Toolkit y Tailwind Css<br>- Base de Datos PostgreSql<br>- Desarrollo de Integraciones Backend con Api de Odoo mediante comunicación XMLRPC<br>- Configuración y ambiente de despliegue de apps web bajo Linux Ubuntu Server 22.04 LTS / Nginx / Docker",
-      tech: ["Django Rest Framework", "Next.js 14", "Docker", "Odoo"],
+      tech: [
+        "Django Rest Framework",
+        "Next.js 14",
+        "Redux Toolkit",
+        "Tailwind Css",
+        "PWA",
+        "Api Rest",
+        "Docker",
+        "Redis",
+        "Sockets",
+        "Odoo",
+        "XMLRPC",
+        "PostgreSql",
+      ],
       projects: [
         {
           title: "Visor de Productos Web Responsive",
@@ -158,9 +222,11 @@ const profileData: ProfileData = {
     },
     {
       company: "Cargobot",
+      logo: "projects/cargobot/logo.webp",
+      link: "https://www.cargobot.io",
       role: "Senior Frontend Developer",
       period: "Mar 2022 – Jul 2023",
-      location: "Remoto — Miami, USA",
+      location: "Remoto - Miami, USA 🇺🇸",
       description:
         "- Desarrollador Web Front-End bajo el framework Vue.<br>- Manejo de Vuex<br>- Rediseño de interfaces bajo arquitectura responsive<br>- Integraciones de funcionalidades, componentes y widgets con Amazon Freight, Macropoint, Green Screems, Chatbot.. En el ámbito de la gestión de carga<br>- Soporte y actualizaciones de funcionalidades front-end del core de la app web",
       tech: ["Vue.js", "Vuex", "Amazon Freight", "JavaScript"],
@@ -168,104 +234,408 @@ const profileData: ProfileData = {
         {
           title: "Cargobot",
           url: "https://www.cargobot.io/",
-          description: "",
+          preview: "projects/cargobot/cargobot-logo.png",
+          description:
+            "Cargobot es una plataforma que conecta su negocio con una red de transportistas verificados para todas sus necesidades de transporte de mercancías, ya sean LTL, FTL, refrigeradas y mucho más. Disfrutando de acceso instantáneo a tarifas competitivas, herramientas avanzadas de gestión de envíos y asistencia de expertos. Ayuda a Transportar su carga con confianza, sabiendo que cuenta con la tecnología y servicios necesarios para la cadena de suministros.",
           media: [],
         },
       ],
     },
     {
       company: "The Singular Factory",
+      logo: "projects/the-singular-factory/singularfactory-logo.png",
+      link: "https://www.singularfactory.com/",
       role: "Full Stack Developer",
       period: "Jul 2020 – Jul 2023",
-      location: "Remoto — Las Palmas, España",
+      location: "Remoto - Las Palmas, España 🇪🇸",
       description:
         "- Full-Stack Developer bajo frameworks Node, Django, Angular y Vue<br>- Manejo de Docker, GraphQl, Lenguaje SQL, Base de Datos PostgreSql / MySql y Migraciones de BD PostgreSql<br>- Desarrollo de Integraciones backend con Apis bancarias y pasarelas de pago como Stripe bajo Django Rest Framework y Node.Js<br>- Desarrollo en Django Rest Framework y Flask con arquitectura de microservicios",
       tech: [
-        "Node.js",
-        "Django",
         "Angular",
         "Vue.js",
+        "Node.js",
+        "Django",
+        "Django Rest Framework",
         "Docker",
         "GraphQL",
         "PostgreSQL",
+        "MySQL",
+        "WordPress",
+        "Stripe",
+        "AWS",
+        "Api Rest",
+        "Rest Full",
+        "Microservicios",
       ],
       projects: [
         {
           title: "CMED",
-          url: "https://www.cmed-online.com",
+          url: "",
+          preview: "projects/the-singular-factory/cmed-logo.jpg",
           description:
-            "Organiza tu vídeo consulta con especialistas médicos y utiliza nuestro sistema de mensajería segura para discutir tu caso con uno de nuestros especialistas",
+            "Es una plataforma que organiza vídeo consultas con especialistas médicos y utiliza sistema de mensajería segura para discutir casos con especialistas de manera online.",
+          media: [],
+        },
+        {
+          title: "Elektra",
+          url: "",
+          preview: "projects/the-singular-factory/elektra-logo.png",
+          description: "",
           media: [],
         },
       ],
     },
     {
       company: "Trigo Technologies",
+      logo: "projects/trigo/logo.png",
+      link: "https://www.trigo.cl/",
       role: "Full Stack Developer",
       period: "Jun 2020 – Dic 2021",
-      location: "Remoto - Santiago, Chile",
+      location: "Remoto - Santiago, Chile 🇨🇱",
       description:
         "Web Developer Full-Stack Js bajo los frameworks Angular, Electron y Nest. Patrón de diseño y desarrollo bajo Clean Architecture y Clean Code. Base de Datos NoSQL MongoDB y servicios en Firebase.",
-      tech: ["Angular", "Electron", "Nest", "MongoDB", "Firebase"],
+      tech: ["Angular", "Electron", "Nest.js", "MongoDB", "Firebase"],
       projects: [
         {
           title: "Infoscreen GO",
           url: "https://www.youtube.com/watch?v=X54SpwPoG-o",
-          description: "Sistema de selección y autopago.",
+          description:
+            "Sistema de selección y autopago de productos y/o servicios, adecuado totalmente para mejorar el flujo de ventas de cualquier tipo de negocio.",
           media: [],
         },
       ],
     },
     {
       company: "GuayanaDev",
+      logo: "projects/guayanadev/gdev-logo.png",
+      link: "https://www.guayanadev.com",
       role: "CEO & Founder",
       period: "Jun 2020 – Dic 2021",
-      location: "Ciudad Guayana, Venezuela",
+      location: "Ciudad Guayana, Venezuela 	🇻🇪",
       description:
         "Fundación y liderazgo de empresa de desarrollo de software. Gestión de proyectos y equipos de desarrollo.",
-      tech: ["Emprendimiento", "Gestión de Proyectos", "Liderazgo"],
+      tech: [
+        "Emprendimiento",
+        "Gestión de Proyectos",
+        "Liderazgo",
+        "Vue.js",
+        "Angular",
+        "React",
+        "Laravel",
+        "Node.js",
+        "Nest.js",
+        "WordPress",
+        "PostgreSQL",
+        "MySQL",
+        "SQLServer",
+        "Api Rest",
+      ],
+      projects: [
+        {
+          title: "GuayanaDev",
+          url: "https://www.guayanadev.com",
+          preview: "projects/guayanadev/gdev-logo.png",
+          description:
+            "Website de la empresa de desarrollo de software GuayanaDev.",
+          media: [],
+        },
+        {
+          title: "WhatSwap Website",
+          url: "https://www.whatswap.ca",
+          description:
+            "Primera plataforma y aplicación de intercambio para usuarios, empresas y servicios, WhatSwap es una opción rápida y eficiente para optimizar los recursos en un mundo cada vez más conectado.",
+          media: [
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/website-1.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/website-2.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/website-3.png",
+            },
+          ],
+        },
+        {
+          title: "WhatSwap Web App",
+          preview: "projects/guayanadev/whatswap/webapp-1.png",
+          url: "https://www.whatswap.ca",
+          description: "Aplicación de intercambio de productos y/o servicios.",
+          media: [
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/webapp-1.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/webapp-2.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/webapp-3.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/whatswap/webapp-4.png",
+            },
+          ],
+        },
+        {
+          title: "La Esperanza Servicios Exequiales Website",
+          url: "",
+          preview: "projects/guayanadev/la-esperanza/logo.jpg",
+          description:
+            "Empresa de previsión y asistencia familiar líder a nivel Nacional, con más de 20 años brindando servicios de calidad y siendo el Aliado Permanente.",
+          media: [
+            {
+              type: "image",
+              url: "projects/guayanadev/la-esperanza/website.png",
+            },
+          ],
+        },
+        {
+          title: "Secard",
+          preview: "projects/guayanadev/secard/carnet-guayanadev.png",
+          description:
+            "Sistema automatizado de gestión de procesos de carnets digitales",
+          media: [
+            {
+              type: "image",
+              url: "projects/guayanadev/secard/carnet-guayanadev.png",
+            },
+            {
+              type: "image",
+              url: "projects/guayanadev/secard/carnet-rumbapp.png",
+            },
+          ],
+        },
+      ],
     },
     {
       company: "Idepixel",
+      logo: "projects/idepixel/logo.jpg",
+      link: "https://idepixel.com",
       role: "CTO & Software Architect",
       period: "Jun 2018 – Jun 2020",
-      location: "Ciudad Guayana, Venezuela",
+      location: "Ciudad Guayana, Venezuela 	🇻🇪",
       description:
         "Dirección técnica y diseño de arquitectura de software para proyectos web y mobile.",
       tech: [
-        "React",
+        "Emprendimiento",
+        "Gestión de Proyectos",
+        "Liderazgo",
+        "Vue.js",
+        "Angular",
+        "Laravel",
         "Node.js",
         "PostgreSQL",
-        "Docker",
-        "Arquitectura de Software",
+        "MySQL",
+        "SQLServer",
+        "Api Rest",
+      ],
+      projects: [
+        {
+          title: "Sofiah",
+          preview: "projects/jd-freelancer/sofiah/logo.png",
+          description:
+            "Sistema Operativo Financiero y Gerencial para Cajas de Ahorros.",
+          url: "",
+          media: [],
+        },
       ],
     },
   ],
 
   education: [
     {
+      logo: "educations/uneg-logo.jpg",
       degree: "Ingeniero en Informática",
       institution: "Universidad Nacional Experimental de Guayana (UNEG)",
       period: "2013 – 2018",
       description:
         "Ingeniería en Informática con enfoque en desarrollo de software y arquitectura de sistemas.",
+      link: "https://www.uneg.edu.ve/",
     },
     {
+      logo: "educations/jgtecnologias-logo.png",
       degree: "Redes Profesionales y Soporte IP",
       institution: "J.G Tecnologías",
       period: "2015 – 2016",
       description:
         "Certificación en redes profesionales, soporte IP y administración de infraestructura de red.",
+      link: "https://www.behance.net/jgtecnologias",
     },
   ],
 
   projects: [
     {
       name: "Portafolio Ubuntu (Proyecto Actual)",
+      preview: "imgs/og/og-image.png",
       description:
         "Portfolio web inspirado en Ubuntu 24.04 LTS con emulación de escritorio GNOME. Construido con Next.js y Chakra UI.",
       tech: ["Next.js", "React", "TypeScript", "TailwindCSS", "Chakra UI"],
       link: "https://github.com/JesusD2405/projects-portfolio",
+      media: [
+        {
+          type: "image",
+          url: "projects/jd-freelancer/portfolio-jd/website-1.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/portfolio-jd/website-4.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/portfolio-jd/website-6.png",
+        },
+      ],
+    },
+    {
+      name: "Crypto Rocket VES",
+      preview: "projects/jd-freelancer/crypto-rocket-ves/app-1.png",
+      description:
+        "Web App para monitoreo en tiempo real, análisis y estrategias de critomonedas con notificaciones vía bot de Telegram.",
+      tech: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Telegram Bot API",
+      ],
+      link: "",
+      media: [],
+    },
+    {
+      name: "Rifas El Palmar",
+      preview: "projects/jd-freelancer/rifas-el-palmar/logo.jpeg",
+      description:
+        "Website y App de Rifas El Palmar. Para gestión de rifas, compra de tickets y resultados. Incluye notificaciones en tiempo real via email en compra de tickets y resultados de rifas.",
+      tech: [
+        "Django",
+        "Html",
+        "Css",
+        "Bootstrap",
+        "Javascript",
+        "JQuery",
+        "PostgreSQL",
+      ],
+      link: "http://rifaselpalmar.com/",
+      media: [
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-1.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-2.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-3.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-4.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-7.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-8.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-9.png",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/rifas-el-palmar/webapp-10.png",
+        },
+      ],
+    },
+    {
+      name: "CableHub",
+      preview: "projects/jd-freelancer/cablehub/logo.png",
+      description:
+        "Sistema de gestión de Fibra Óptica (OLT, ONT, ONU) conexión con dispositivos de red Huawei, con soporte para gestión de usuarios y permisos.",
+      tech: ["Vue.js", "Vuex", "Nest.js", "PostgreSQL", "SSH", "SNMP", "Linux"],
+      link: "",
+      media: [
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-1.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-2.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-3.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-4.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-5.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-6.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-7.jpg",
+        },
+        {
+          type: "image",
+          url: "projects/jd-freelancer/cablehub/app-8.jpg",
+        },
+      ],
+    },
+    {
+      name: "Secard",
+      preview: "projects/guayanadev/secard/carnet-guayanadev.png",
+      description:
+        "Sistema automatizado de gestión de procesos de carnets digitales. Gestión de usuarios, exportación de ficha del usuario, impresión de carnet con código QR y validación de acceso (Denegar/Permitir carnet).",
+      tech: [
+        "Vue.js",
+        "Vuex",
+        "Django Rest Framework",
+        "PostgreSQL",
+        "Api Rest",
+        "AWS",
+        "Cloudfront",
+        "Docker",
+        "Nginx",
+        "Linux",
+      ],
+      link: "",
+      media: [
+        {
+          type: "image",
+          url: "projects/guayanadev/secard/carnet-guayanadev.png",
+        },
+        {
+          type: "image",
+          url: "projects/guayanadev/secard/carnet-rumbapp.png",
+        },
+      ],
+    },
+    {
+      name: "Ipspuneg",
+      preview: "projects/jd-freelancer/ipspuneg.png",
+      description: "Sistema de consulta de información de la empresa Ipspuneg.",
+      tech: ["Vue.js", "Vuex", "Django Rest Framework", "PostgreSQL", "Linux"],
+      link: "",
+      media: [],
     },
   ],
 
@@ -309,6 +679,7 @@ const profileData: ProfileData = {
     {
       category: "DevOps & Tools",
       skills: [
+        { name: "AWS", level: 90 },
         { name: "Linux", level: 95 },
         { name: "Docker", level: 90 },
         { name: "Git", level: 95 },

@@ -1,14 +1,37 @@
-import profileData from "@/helpers/profile-data";
+import { useState } from "react";
+import profileData, { Project } from "@/helpers/profile-data";
 import { ExternalLink } from "lucide-react";
+import {
+  ProjectDetailModal,
+  ModalProject,
+} from "@/components/ProjectDetailModal";
+
+/** Adapta un Project del perfil al formato ModalProject */
+function toModalProject(p: Project): ModalProject {
+  return {
+    title: p.name,
+    url: p.link && p.link !== "#" && p.link !== "" ? p.link : undefined,
+    preview: p.preview,
+    description: p.description,
+    media: p.media,
+  };
+}
 
 export function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <div className="file-manager-section">
-      <div className="file-sidebar">
+      <div className="hidden md:block file-sidebar">
         <h3>📁 Proyectos</h3>
         <ul>
           {profileData.projects.map((p, i) => (
-            <li key={i} className="file-item">
+            <li
+              key={i}
+              className="file-item"
+              onClick={() => setSelectedProject(p)}
+              style={{ cursor: "pointer" }}
+            >
               📂 {p.name}
             </li>
           ))}
@@ -17,11 +40,36 @@ export function ProjectsSection() {
       <div className="file-content">
         <div className="projects-grid">
           {profileData.projects.map((p, i) => (
-            <div key={i} className="project-card">
+            <div
+              key={i}
+              className="project-card"
+              onClick={() => setSelectedProject(p)}
+              style={{ cursor: "pointer" }}
+            >
+              {/* Preview image */}
+              {(p.preview || (p.link && p.link !== "#" && p.link !== "")) && (
+                <div className="project-card-preview">
+                  <img
+                    src={
+                      p.preview
+                        ? p.preview
+                        : `https://www.google.com/s2/favicons?domain=${new URL(p.link).hostname}&sz=128`
+                    }
+                    alt={p.name}
+                    className={`project-card-preview-img${!p.preview ? " fallback-favicon" : ""}`}
+                  />
+                </div>
+              )}
+
               <div className="project-card-header">
                 <h3>{p.name}</h3>
-                {p.link !== "#" && (
-                  <a href={p.link} target="_blank" rel="noopener noreferrer">
+                {p.link !== "#" && p.link !== "" && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <ExternalLink size={16} />
                   </a>
                 )}
@@ -38,6 +86,14 @@ export function ProjectsSection() {
           ))}
         </div>
       </div>
+
+      {/* Project Detail Modal */}
+      {selectedProject && (
+        <ProjectDetailModal
+          project={toModalProject(selectedProject)}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </div>
   );
 }

@@ -1,14 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import profileData, { ExperienceProject } from "@/helpers/profile-data";
-import {
-  Briefcase,
-  ChevronDown,
-  Globe,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-} from "lucide-react";
+import { Briefcase, ChevronDown, Globe, ExternalLink } from "lucide-react";
+import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 
 export function ExperienceSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
@@ -16,20 +9,14 @@ export function ExperienceSection() {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [selectedProject, setSelectedProject] =
     useState<ExperienceProject | null>(null);
-  const [mediaIndex, setMediaIndex] = useState(0);
 
   const handleOpenProject = (project: ExperienceProject) => {
     setSelectedProject(project);
-    setMediaIndex(0);
   };
 
   const handleCloseProject = () => {
     setSelectedProject(null);
   };
-
-  const currentMedia = selectedProject?.media
-    ? selectedProject.media[mediaIndex]
-    : undefined;
 
   const getProjectPreview = (proj: ExperienceProject) => {
     if (proj.preview) return proj.preview;
@@ -44,96 +31,105 @@ export function ExperienceSection() {
     return "";
   };
 
-  const handleNextMedia = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (
-      selectedProject &&
-      selectedProject.media &&
-      mediaIndex < selectedProject.media.length - 1
-    ) {
-      setMediaIndex((m) => m + 1);
-    }
-  };
+  // ─── Detect mobile once on mount ────────────────────────────────────────────
+  const isMobile = useRef(false);
+  useEffect(() => {
+    isMobile.current =
+      /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+      window.matchMedia("(pointer: coarse)").matches;
+  }, []);
 
-  const handlePrevMedia = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (mediaIndex > 0) {
-      setMediaIndex((m) => m - 1);
-    }
-  };
-
+  // ─── Throttle refs (separate per device) ───────────────────────────────────
   const lastScrollTime = useRef(0);
-  const touchStartRef = useRef<number | null>(null);
+  // Touch: store gesture start position (reset only on touchEnd, not mid-move)
+  const touchStartY = useRef<number | null>(null);
+  // Prevent double-fire on a single swipe
+  const touchNavigating = useRef(false);
 
-  const handleNav = (
-    deltaY: number,
-    e: React.WheelEvent | React.TouchEvent,
-  ) => {
-    // Si hay un modal abierto, no hacemos scroll-snap
-    if (selectedProject !== null) return;
-    const now = Date.now();
+  // ─── Core navigation ────────────────────────────────────────────────────────
+  const navigate = useCallback(
+    (direction: 1 | -1, stopFn: () => void) => {
+      if (selectedProject !== null) return;
 
-    // Limitamos la velocidad del snap de items a 1 por segundo
-    if (now - lastScrollTime.current < 800) {
-      e.stopPropagation();
-      return;
-    }
-
-    const direction = deltaY > 0 ? 1 : -1;
-    const currentIndex = expandedIndex ?? 0;
-    const nextIndex = currentIndex + direction;
-
-    if (nextIndex >= 0 && nextIndex < profileData.experience.length) {
-      // Cambiamos al nuevo item
-      setExpandedIndex(nextIndex);
-      lastScrollTime.current = now;
-      e.stopPropagation(); // Evitamos que salte de página en DesktopWindow
-
-      // Centramos el nuevo item en pantalla suavemente
-      setTimeout(() => {
-        itemRefs.current[nextIndex]?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }, 50);
-    } else {
-      // Estamos en el último o en el primero y queremos salir
-      // Forzamos el scroll al extremo para que DesktopWindow lo detecte
-      const mw = containerRef.current?.closest(".window-content");
-      if (mw) {
-        if (direction === -1) mw.scrollTop = 0;
-        else mw.scrollTop = mw.scrollHeight;
+      const now = Date.now();
+      // Faster on desktop (550ms), a bit more lenient on mobile (700ms)
+      const throttle = isMobile.current ? 700 : 550;
+      if (now - lastScrollTime.current < throttle) {
+        stopFn();
+        return;
       }
-      // Dejamos que el evento propague hacia arriba a DesktopWindow
-    }
-  };
 
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (Math.abs(e.deltaY) > 20) {
-      handleNav(e.deltaY, e);
-    }
-  };
+      const currentIndex = expandedIndex ?? 0;
+      const nextIndex = currentIndex + direction;
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!selectedProject) {
-      touchStartRef.current = e.touches[0].clientY;
-    }
-  };
+      if (nextIndex >= 0 && nextIndex < profileData.experience.length) {
+        lastScrollTime.current = now;
+        stopFn(); // Prevent propagation to parent window
+        setExpandedIndex(nextIndex);
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (touchStartRef.current === null || selectedProject !== null) return;
-    const deltaY = touchStartRef.current - e.touches[0].clientY;
+        // Wait for React to render the expanded item, then center it.
+        // Using rAF + small delay is more reliable than a fixed timeout.
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            itemRefs.current[nextIndex]?.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+            });
+          }, 80);
+        });
+      } else {
+        // At boundary — let the event propagate so DesktopWindow can switch sections
+        const mw = containerRef.current?.closest(".window-content");
+        if (mw) {
+          mw.scrollTop = direction === -1 ? 0 : mw.scrollHeight;
+        }
+      }
+    },
+    [expandedIndex, selectedProject],
+  );
 
-    if (Math.abs(deltaY) > 40) {
-      handleNav(deltaY, e);
-      // Reiniciamos el toque si logramos navegar para evitar saltos locos en pantalla
-      touchStartRef.current = e.touches[0].clientY;
-    }
-  };
+  // ─── Wheel (desktop) ────────────────────────────────────────────────────────
+  const handleWheel = useCallback(
+    (e: React.WheelEvent<HTMLDivElement>) => {
+      if (Math.abs(e.deltaY) < 20) return;
+      navigate(e.deltaY > 0 ? 1 : -1, () => e.stopPropagation());
+    },
+    [navigate],
+  );
 
-  const handleTouchEnd = () => {
-    touchStartRef.current = null;
-  };
+  // ─── Touch (mobile) ─────────────────────────────────────────────────────────
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      if (selectedProject !== null) return;
+      touchStartY.current = e.touches[0].clientY;
+      touchNavigating.current = false;
+    },
+    [selectedProject],
+  );
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      // Skip if no start recorded, modal open, or already navigated this swipe
+      if (
+        touchStartY.current === null ||
+        selectedProject !== null ||
+        touchNavigating.current
+      )
+        return;
+
+      const deltaY = touchStartY.current - e.touches[0].clientY;
+      if (Math.abs(deltaY) < 45) return; // Minimum swipe distance
+
+      touchNavigating.current = true; // Lock: one navigation per swipe
+      navigate(deltaY > 0 ? 1 : -1, () => e.stopPropagation());
+    },
+    [navigate, selectedProject],
+  );
+
+  const handleTouchEnd = useCallback(() => {
+    touchStartY.current = null;
+    touchNavigating.current = false;
+  }, []);
 
   return (
     <div
@@ -177,9 +173,78 @@ export function ExperienceSection() {
                 >
                   <div className="timeline-header-left">
                     <h3 className="timeline-role">
-                      <i className="fa-solid fa-briefcase"></i>
-                      {exp.company} &nbsp;
-                      <Globe size={11} className="inline mr-2" /> &nbsp;
+                      {exp.logo ? (
+                        exp.link ? (
+                          <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="company-logo-wrap company-logo-wrap--link"
+                            onClick={(ev) => ev.stopPropagation()}
+                            title={exp.company}
+                          >
+                            <img
+                              src={exp.logo}
+                              alt={exp.company}
+                              className="company-logo-img"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                target.style.display = "none";
+                                const fallback =
+                                  target.nextElementSibling as HTMLElement | null;
+                                if (fallback) fallback.style.display = "flex";
+                              }}
+                            />
+                            <span
+                              className="company-logo-fallback"
+                              style={{ display: "none" }}
+                            >
+                              <Briefcase size={14} />
+                            </span>
+                          </a>
+                        ) : (
+                          <span className="company-logo-wrap">
+                            <img
+                              src={exp.logo}
+                              alt={exp.company}
+                              className="company-logo-img"
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                target.style.display = "none";
+                                const fallback =
+                                  target.nextElementSibling as HTMLElement | null;
+                                if (fallback) fallback.style.display = "flex";
+                              }}
+                            />
+                            <span
+                              className="company-logo-fallback"
+                              style={{ display: "none" }}
+                            >
+                              <Briefcase size={14} />
+                            </span>
+                          </span>
+                        )
+                      ) : (
+                        <Briefcase size={14} />
+                      )}
+                      {exp.link ? (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="edu-institution-link"
+                          onClick={(ev) => ev.stopPropagation()}
+                        >
+                          {exp.company}
+                          <ExternalLink
+                            size={12}
+                            className="edu-institution-link-icon"
+                          />
+                        </a>
+                      ) : (
+                        <span>{exp.company}</span>
+                      )}
+                      <Globe size={11} className="inline" /> &nbsp;
                       {exp.location}
                     </h3>
                     <span className="timeline-company">{exp.role}</span>
@@ -244,101 +309,10 @@ export function ExperienceSection() {
 
       {/* Project Detail Modal */}
       {selectedProject && (
-        <div className="project-modal-backdrop" onClick={handleCloseProject}>
-          <div
-            className="project-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="project-modal-close"
-              onClick={handleCloseProject}
-            >
-              <X size={20} />
-            </button>
-            <h2 className="project-modal-title">{selectedProject.title}</h2>
-
-            {/* Media Carousel */}
-            {selectedProject.media &&
-            selectedProject.media.length > 0 &&
-            currentMedia ? (
-              <div className="project-carousel">
-                {currentMedia.type === "video" ? (
-                  <video
-                    src={currentMedia.url}
-                    className="project-carousel-media"
-                    controls
-                    autoPlay
-                    muted
-                  />
-                ) : (
-                  <img
-                    src={currentMedia.url}
-                    alt={selectedProject.title}
-                    className="project-carousel-media"
-                  />
-                )}
-
-                {/* Carousel Controls */}
-                {selectedProject.media.length > 1 && (
-                  <>
-                    <button
-                      className={`carousel-btn carousel-btn-prev ${mediaIndex === 0 ? "disabled" : ""}`}
-                      onClick={handlePrevMedia}
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      className={`carousel-btn carousel-btn-next ${mediaIndex === selectedProject.media.length - 1 ? "disabled" : ""}`}
-                      onClick={handleNextMedia}
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-
-                    <div className="carousel-indicators">
-                      {selectedProject.media.map((_, i) => (
-                        <div
-                          key={i}
-                          className={`carousel-dot ${i === mediaIndex ? "active" : ""}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            ) : !selectedProject.preview && selectedProject.url ? (
-              // Favicon Fallback if no media and no preview exist but url is available
-              <div className="project-carousel fallback-modal-carousel">
-                <img
-                  src={getProjectPreview(selectedProject)}
-                  alt={selectedProject.title}
-                  className="project-carousel-media fallback-favicon-modal"
-                />
-              </div>
-            ) : selectedProject.preview ? (
-              // General Preview Fallback if media is empty but preview exists
-              <div className="project-carousel">
-                <img
-                  src={selectedProject.preview}
-                  alt={selectedProject.title}
-                  className="project-carousel-media"
-                />
-              </div>
-            ) : null}
-
-            <p className="project-modal-desc">{selectedProject.description}</p>
-
-            {selectedProject.url && (
-              <a
-                href={selectedProject.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-modal-link-btn"
-              >
-                Ver Proyecto <ExternalLink size={16} />
-              </a>
-            )}
-          </div>
-        </div>
+        <ProjectDetailModal
+          project={selectedProject}
+          onClose={handleCloseProject}
+        />
       )}
     </div>
   );
