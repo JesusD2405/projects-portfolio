@@ -131,14 +131,27 @@ export function ExperienceSection() {
     touchNavigating.current = false;
   }, []);
 
+  /**
+   * ACCORDION EXPANSION & NAVIGATION LOGIC:
+   * 
+   * 1. State Management: `expandedIndex` tracks which experience item is currently open.
+   * 2. Expansion Effect:
+   *    - CSS classes `timeline-item-expanded` and `timeline-detail-open` are applied based on state.
+   *    - Smooth transitions are handled in globals.css using max-height, opacity, and padding.
+   * 3. Navigation (Wheel & Touch):
+   *    - `navigate()` function handles moving between items with a throttle to prevent rapid jumping.
+   *    - On desktop, `onWheel` triggers navigation.
+   *    - On mobile, `onTouchStart/Move/End` implements a swipe gesture detector.
+   * 4. Auto-Scroll: After expansion, `scrollIntoView` ensures the active item is visible.
+   */
   return (
     <div
       className="timeline-section"
       ref={containerRef}
-      onWheel={handleWheel}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      // onWheel={handleWheel}
+      // onTouchStart={handleTouchStart}
+      // onTouchMove={handleTouchMove}
+      // onTouchEnd={handleTouchEnd}
     >
       <div className="timeline-container">
         {profileData.experience.map((exp, i) => {

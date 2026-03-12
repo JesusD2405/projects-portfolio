@@ -1,5 +1,5 @@
 "use client";
-import { FC, ReactNode, useState, useRef } from "react";
+import { FC, ReactNode, useState, useRef, useEffect } from "react";
 import { X, Minus, Maximize2 } from "lucide-react";
 
 interface DesktopWindowProps {
@@ -21,6 +21,13 @@ const DesktopWindow: FC<DesktopWindowProps> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const lastTrigger = useRef(0);
   const touchStartRef = useRef<number | null>(null);
+
+  // Reset scroll position when the active section (title) changes
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [title, isOpen]);
 
   if (!isOpen) return null;
 

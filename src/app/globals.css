@@ -2183,11 +2183,16 @@ body {
     gap: 10px;
   }
 
-  .timeline-header-btn {
+  .timeline-header-btn,
+  .edu-card-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding: 14px 12px;
     gap: 12px;
+  }
+
+  .edu-card-body {
+    padding: 10px 12px 14px;
   }
 
   .timeline-header-left {
