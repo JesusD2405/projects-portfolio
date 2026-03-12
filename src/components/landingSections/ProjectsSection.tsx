@@ -1,5 +1,6 @@
 import { useState } from "react";
-import profileData, { Project } from "@/helpers/profile-data";
+import type { Project } from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
 import { ExternalLink } from "lucide-react";
 import {
   ProjectDetailModal,
@@ -18,7 +19,10 @@ function toModalProject(p: Project): ModalProject {
 }
 
 export function ProjectsSection() {
+  const { profileData } = useProfile();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  if (!profileData) return null;
 
   return (
     <div className="file-manager-section">

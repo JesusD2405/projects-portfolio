@@ -5,6 +5,7 @@ import "./globals.css";
 // Components
 import { Provider } from "@/components/chakra-ui/provider";
 import Navbar from "@/components/core/navbar/navbar";
+import { ProfileProvider } from "@/contexts/ProfileContext";
 // Data
 import profileData from "@/helpers/profile-data";
 
@@ -267,10 +268,12 @@ export default function RootLayout({
               </Script>
             </>
           )}
-        <Provider>
-          <Navbar />
-          {children}
-        </Provider>
+        <ProfileProvider>
+          <Provider>
+            <Navbar />
+            {children}
+          </Provider>
+        </ProfileProvider>
       </body>
     </html>
   );

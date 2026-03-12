@@ -14,15 +14,15 @@ import {
   EmptyState,
 } from "@chakra-ui/react";
 import { BellOff, Bell } from "lucide-react";
-import profileData from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
 
 const Notification: FC = () => {
   const [mounted, setMounted] = useState(false);
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  const notifications = profileData.notifications || [];
+  const { profileData } = useProfile();
+  const notifications = profileData?.notifications || [];
 
   const getCurrentDateFormat = () => {
     const date1 = new Date();
@@ -34,7 +34,7 @@ const Notification: FC = () => {
     };
 
     return `${date1.getDate()} de ${date1
-      .toLocaleDateString("es-VE", options1)
+      .toLocaleDateString(profileData?.languages?.[0]?.language?.toLowerCase() === "inglés" ? "en-US" : "es-VE", options1)
       .replace(".", "")}`;
   };
 
@@ -44,8 +44,7 @@ const Notification: FC = () => {
       hour: "numeric",
       minute: "numeric",
     };
-
-    return date2.toLocaleTimeString("es-VE", options2).replaceAll(".", "");
+    return date2.toLocaleTimeString(profileData?.languages?.[0]?.language?.toLowerCase() === "inglés" ? "en-US" : "es-VE", options2).replaceAll(".", "");
   };
 
   useEffect(() => {

@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import profileData from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
 
 export function SkillsSection() {
+  const { profileData } = useProfile();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -10,6 +11,8 @@ export function SkillsSection() {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  if (!profileData) return null;
 
   return (
     <div className="skills-dashboard" ref={sectionRef}>

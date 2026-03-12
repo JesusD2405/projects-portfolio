@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import profileData, { ExperienceProject } from "@/helpers/profile-data";
+import type { ExperienceProject } from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
 import { Briefcase, ChevronDown, Globe, ExternalLink } from "lucide-react";
 import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 
 export function ExperienceSection() {
+  const { profileData } = useProfile();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -61,6 +63,8 @@ export function ExperienceSection() {
 
       const currentIndex = expandedIndex ?? 0;
       const nextIndex = currentIndex + direction;
+
+      if (!profileData) return;
 
       if (nextIndex >= 0 && nextIndex < profileData.experience.length) {
         lastScrollTime.current = now;
@@ -144,6 +148,9 @@ export function ExperienceSection() {
    *    - On mobile, `onTouchStart/Move/End` implements a swipe gesture detector.
    * 4. Auto-Scroll: After expansion, `scrollIntoView` ensures the active item is visible.
    */
+
+  if (!profileData) return null;
+
   return (
     <div
       className="timeline-section"

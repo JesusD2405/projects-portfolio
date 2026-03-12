@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import profileData from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
 import {
   Github,
   Linkedin,
@@ -31,6 +31,7 @@ const INITIAL_FORM: FormState = {
 };
 
 export function ContactSection() {
+  const { profileData } = useProfile();
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -86,6 +87,8 @@ export function ContactSection() {
   };
 
   const isLoading = status === "loading";
+
+  if (!profileData) return null;
 
   return (
     <div className="contact-section">

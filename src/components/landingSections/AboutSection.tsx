@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
-import profileData from "@/helpers/profile-data";
+import { useProfile } from "@/contexts/ProfileContext";
+import { ProfileData } from "@/helpers/profile-data";
 import { TypingAnimation } from "@/components/core/terminal/animated-terminal";
 
 /* ─────────────────────────────────────────────────────────────────
@@ -75,7 +76,7 @@ const UBUNTU_ASCII = `
 /* ─────────────────────────────────────────────────────────────────
    Info rows definition — order matches real neofetch output
 ───────────────────────────────────────────────────────────────── */
-function buildInfoRows(langs: string) {
+function buildInfoRows(langs: string, profileData: ProfileData) {
   return [
     /* 0 */ {
       type: "title" as const,
@@ -175,11 +176,21 @@ function buildInfoRows(langs: string) {
      4 → link pills + cursor visible
 ───────────────────────────────────────────────────────────────── */
 export function AboutSection() {
+  const { profileData } = useProfile();
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [animConfig, setAnimConfig] = useState({
     msPerChar: 65,
     infoStep: 550,
   });
+
+  // Early return while loading data
+  if (!profileData) {
+    return (
+      <div className="terminal-section about-terminal-section flex items-center justify-center">
+        <span className="terminal-prompt-line animate-pulse">jesusdavid@ubuntu:~$ loading profile...</span>
+      </div>
+    );
+  }
 
   /** Anchor element at the bottom of the terminal — used for auto-scroll on mobile */
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -188,7 +199,7 @@ export function AboutSection() {
     .map((l) => `${l.language} (${l.proficiency})`)
     .join(", ");
 
-  const infoRows = buildInfoRows(langs);
+  const infoRows = buildInfoRows(langs, profileData);
 
   /* ── Animation phase sequencing ─────────────────────────────── */
   useEffect(() => {

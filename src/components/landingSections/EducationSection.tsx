@@ -1,7 +1,11 @@
-import profileData from "@/helpers/profile-data";
+"use client";
+import { useProfile } from "@/contexts/ProfileContext";
 import { GraduationCap, ExternalLink } from "lucide-react";
 
 export function EducationSection() {
+  const { profileData } = useProfile();
+  if (!profileData) return null;
+
   return (
     <div className="timeline-section">
       <div className="timeline-container">
