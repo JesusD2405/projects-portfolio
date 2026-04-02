@@ -183,26 +183,13 @@ export function AboutSection() {
     infoStep: 550,
   });
 
-  // Early return while loading data
-  if (!profileData) {
-    return (
-      <div className="terminal-section about-terminal-section flex items-center justify-center">
-        <span className="terminal-prompt-line animate-pulse">jesusdavid@ubuntu:~$ loading profile...</span>
-      </div>
-    );
-  }
-
   /** Anchor element at the bottom of the terminal — used for auto-scroll on mobile */
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  const langs = profileData.languages
-    .map((l) => `${l.language} (${l.proficiency})`)
-    .join(", ");
-
-  const infoRows = buildInfoRows(langs, profileData);
-
   /* ── Animation phase sequencing ─────────────────────────────── */
   useEffect(() => {
+    if (!profileData) return;
+
     // Slower, more readable animation timings globally
     const msPerChar = 65;
     const infoStep = 550;
@@ -223,7 +210,7 @@ export function AboutSection() {
       clearTimeout(t3);
       clearTimeout(t4);
     };
-  }, []);
+  }, [profileData]);
 
   /* ── Auto-scroll to bottom on mobile during animation ── */
   useEffect(() => {
@@ -250,6 +237,21 @@ export function AboutSection() {
       if (interval) clearInterval(interval);
     };
   }, [phase]);
+
+  // Early return while loading data
+  if (!profileData) {
+    return (
+      <div className="terminal-section about-terminal-section flex items-center justify-center">
+        <span className="terminal-prompt-line animate-pulse">jesusdavid@ubuntu:~$ loading profile...</span>
+      </div>
+    );
+  }
+
+  const langs = profileData.languages
+    .map((l) => `${l.language} (${l.proficiency})`)
+    .join(", ");
+
+  const infoRows = buildInfoRows(langs, profileData);
 
   return (
     <div className="terminal-section about-terminal-section">

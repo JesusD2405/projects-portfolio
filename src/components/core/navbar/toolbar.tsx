@@ -1,7 +1,13 @@
 "use client";
 
 import { FC, useState, useRef, useEffect } from "react";
-import { Languages, Wifi, Volume2, BatteryFull, ChevronDown } from "lucide-react";
+import {
+  Languages,
+  Wifi,
+  Volume2,
+  BatteryFull,
+  ChevronDown,
+} from "lucide-react";
 import { useProfile } from "@/contexts/ProfileContext";
 
 const Toolbar: FC = () => {
@@ -35,6 +41,7 @@ const Toolbar: FC = () => {
             style={{
               backgroundColor: "var(--ubuntu-panel)",
               border: "1px solid var(--ubuntu-window-border)",
+              padding: "8px",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -47,7 +54,7 @@ const Toolbar: FC = () => {
                 language === "es" ? "text-white font-bold" : "text-white/70"
               }`}
             >
-              Español
+              Español 🇻🇪
             </button>
             <button
               onClick={() => {
@@ -58,7 +65,7 @@ const Toolbar: FC = () => {
                 language === "en" ? "text-white font-bold" : "text-white/70"
               }`}
             >
-              English
+              English 🇺🇸
             </button>
           </div>
         )}
