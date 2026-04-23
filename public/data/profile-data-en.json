@@ -3,7 +3,7 @@
   "headline": "Full-Stack Software Developer | Node.Js | Django | React | Vue.js",
   "email": "jesusdavid2405@gmail.com",
   "location": "Ciudad Guayana (8050), Bolívar State, Venezuela.",
-  "about": "I’ve been developing web apps +8 years. I’ve also had the opportunity to lead development teams, manage startups in the software development industry, and contribute my expertise in the field of education. <br><br>“Hello World!” That’s how it all began… I’m passionate about technology and innovative developments.<br><br>“The best way to predict the future is to invent it.” - Steve Jobs",
+  "about": "I develop web apps with +8 years of experience, lead startups in the software development industry, and advise teams at various stages of projects.<br><br>“The best way to predict the future is to invent it.” - Steve Jobs",
   "github": "https://github.com/JesusD2405",
   "githubUser": "JesusD2405",
   "linkedin": "https://www.linkedin.com/in/jesus-david-perez/",
@@ -19,7 +19,7 @@
       "role": "Full Stack Developer",
       "period": "Nov 2023 – Present",
       "location": "Remote - San Juan, Puerto Rico 🇵🇷",
-      "description": "- Full-Stack Web Developer, developing in PHP and Next.js 14 framework.<br>- Management of Redux Toolkit and Tailwind CSS.<br>- Oracle Database.<br>- Support and feature updates for web apps using PHP, HTML, CSS, JS, JQUERY",
+      "description": "- Full-Stack Web Developer, building applications in PHP and the Next.js 14 framework.<br>- Next.js v16 and Redux Toolkit.<br>- Tailwind CSS.<br>- AdobeSign API.<br>- AI Integrations (Gemini 3.1, ChatGPT, Claude).<br>- Chatbots.<br>- Oracle Database.<br>- Support and feature updates for web applications using PHP, HTML, CSS, JS, and jQuery.",
       "tech": [
         "Next.js 14",
         "Redux Toolkit",
@@ -325,7 +325,13 @@
         "Telegram Bot API"
       ],
       "link": "",
-      "media": []
+      "media": [
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-0.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-1.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-2.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-3.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-4.png" }
+      ]
     },
     {
       "name": "El Palmar Raffles",
