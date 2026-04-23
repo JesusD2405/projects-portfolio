@@ -3,7 +3,7 @@
   "headline": "Full-Stack Software Developer | Node.Js | Django | React | Vue.js",
   "email": "jesusdavid2405@gmail.com",
   "location": "Ciudad Guayana (8050), Edo. Bolívar, Venezuela.",
-  "about": "Desarrollo apps webs desde hace +8 años, también he tenido la oportunidad de liderar equipos de desarrollo, llevar empredimientos en la industria del desarrollo de software y aportar mi experiencia en ámbitos de educación. <br><br>¡Hola Mundo! así empezó todo.. Soy un apasionado por la tecnología y los desarrollos innovadores.<br><br>“La mejor manera de predecir el futuro es inventarlo.” - Steve Jobs",
+  "about": "Desarrollo apps webs con +8 años de experiencia, lidero empredimientos en la industria del desarrollo de software y asesoro equipos de trabajo en diversas etapas de proyectos.<br><br>“La mejor manera de predecir el futuro es inventarlo.” - Steve Jobs",
   "github": "https://github.com/JesusD2405",
   "githubUser": "JesusD2405",
   "linkedin": "https://www.linkedin.com/in/jesus-david-perez/",
@@ -19,7 +19,7 @@
       "role": "Full Stack Developer",
       "period": "Nov 2023 – Presente",
       "location": "Remoto - San Juan, Puerto Rico 🇵🇷",
-      "description": "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js 14.<br>- Manejo de Redux Toolkit y Tailwind CSS.<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
+      "description": "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js 14.<br>- Next.js v16 y Manejo de Redux Toolkit<br>- Tailwind CSS.<br>- Api AdobeSign<br>- Integraciones con IA (Gemini 3.1, Chat GPT, Claude)<br>- ChatBots<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
       "tech": [
         "Next.js 14",
         "Redux Toolkit",
@@ -325,7 +325,13 @@
         "Telegram Bot API"
       ],
       "link": "",
-      "media": []
+      "media": [
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-0.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-1.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-2.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-3.png" },
+        { "type": "image", "url": "projects/jd-freelancer/crypto-rocket-ves/app-4.png" }
+      ]
     },
     {
       "name": "Rifas El Palmar",
