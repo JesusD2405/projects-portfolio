@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code — configuración local, no subir al repo
+.claude/
+CLAUDE.md
+AGENTS.md
