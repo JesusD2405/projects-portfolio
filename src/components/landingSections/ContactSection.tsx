@@ -58,7 +58,11 @@ export function ContactSection() {
     setServerError("");
 
     try {
-      const res = await fetch("/projects-portfolio/api/new-contact", {
+      const externalUrl = process.env.NEXT_PUBLIC_EXTERNAL_NOTIFICATION_URL;
+      const endpoint = externalUrl
+        ? externalUrl
+        : "/projects-portfolio/api/new-contact";
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
