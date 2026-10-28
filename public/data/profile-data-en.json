@@ -304,7 +304,7 @@
     {
       "name": "Ubuntu Portfolio (Current Project)",
       "preview": "imgs/og/og-image.png",
-      "description": "Web portfolio inspired by Ubuntu 24.04 LTS emulating the GNOME desktop. Built with Next.js and Chakra UI.",
+      "description": "Web portfolio inspired by Ubuntu 26.04 LTS emulating the GNOME desktop. Built with Next.js and Chakra UI.",
       "tech": ["Next.js", "React", "TypeScript", "TailwindCSS", "Chakra UI"],
       "link": "https://github.com/JesusD2405/projects-portfolio",
       "media": [

@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     siteName: "Jesús David Pérez — Portfolio",
     title: "Jesús David Pérez | Full-Stack Software Developer",
     description:
-      "Full-Stack Software Developer con +8 años de experiencia. React, Next.js, Node.js, Django, Vue.js. Portfolio inspirado en Ubuntu 24.04 LTS.",
+      "Full-Stack Software Developer con +8 años de experiencia. React, Next.js, Node.js, Django, Vue.js. Portfolio inspirado en Ubuntu 26.04 LTS.",
     images: [
       {
         url: `${BASE_URL}/imgs/og/og-image.png`,

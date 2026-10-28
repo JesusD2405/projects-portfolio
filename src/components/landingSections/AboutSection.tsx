@@ -94,7 +94,7 @@ function buildInfoRows(langs: string, profileData: ProfileData) {
       content: (
         <>
           <span className="terminal-key">OS:</span>{" "}
-          <span className="neofetch-value">Ubuntu 24.04 LTS Noble Numbat</span>
+          <span className="neofetch-value">Ubuntu 26.04 LTS Resolute Raccoon</span>
         </>
       ),
     },
