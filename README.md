@@ -1,8 +1,8 @@
-# 🐧 Ubuntu 24.04 LTS Portfolio
+# 🐧 Ubuntu 26.04 LTS Portfolio
 
 <div align="center">
   <img src="public/imgs/og/og-image.png" alt="Ubuntu Portfolio Banner" width="800">
-  <p><i>Un portafolio web moderno y dinámico inspirado en la interfaz de usuario de Ubuntu 24.04 LTS (Noble Numbat).</i></p>
+  <p><i>Un portafolio web moderno y dinámico inspirado en la interfaz de usuario de Ubuntu 26.04 LTS (Resolute Raccoon).</i></p>
 </div>
 
 ---
@@ -13,7 +13,7 @@ Este proyecto es una **Landing Page de tipo Portafolio** desarrollada con **Next
 
 ## ✨ Características Principales
 
-- 🎨 **Interfaz Ubuntu 24.04**: Réplica fiel del diseño de Noble Numbat con bordes redondeados y tipografía Ubuntu.
+- 🎨 **Interfaz Ubuntu 26.04**: Réplica fiel del diseño de Resolute Raccoon con bordes redondeados y tipografía Ubuntu.
 - 💻 **GNOME Desktop Emulation**:
   - **Top Bar**: Con reloj funcional, indicadores de estado y controles.
   - **Dock (Ubuntu Launcher)**: Barra lateral interactiva para navegación rápida entre secciones.

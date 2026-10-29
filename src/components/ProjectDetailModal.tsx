@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight, ExternalLink, Maximize2 } from "lucide-react";
-import { ExperienceProjectMedia } from "@/helpers/profile-data";
+import { ExperienceProjectMedia, ProjectHighlight } from "@/helpers/profile-data";
 
 /** Interfaz normalizada para el modal, compatible con ExperienceProject y Project */
 export interface ModalProject {
@@ -9,6 +9,12 @@ export interface ModalProject {
   preview?: string;
   description: string;
   media?: ExperienceProjectMedia[];
+  badge?: string;
+  tagline?: string;
+  highlights?: ProjectHighlight[];
+  tech?: string[];
+  note?: string;
+  linkLabel?: string;
 }
 
 interface ProjectDetailModalProps {
@@ -167,69 +173,82 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
           className="project-modal-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="project-modal-close" onClick={onClose}>
+          <button className="project-modal-close" onClick={onClose} aria-label="Cerrar">
             <X size={20} />
           </button>
+          {project.badge && (
+            <span className="project-modal-badge">{project.badge}</span>
+          )}
           <h2 className="project-modal-title">{project.title}</h2>
+          {project.tagline && (
+            <p className="project-modal-tagline">{project.tagline}</p>
+          )}
 
           {/* Media Carousel */}
           {project.media && project.media.length > 0 && currentMedia ? (
-            <div className="project-carousel">
-              {/* Fullscreen trigger overlay */}
-              <button
-                className="carousel-fullscreen-btn"
-                onClick={openFullscreen}
-                aria-label="Ver en pantalla completa"
-                title="Pantalla completa"
-              >
-                <Maximize2 size={16} />
-              </button>
-
-              {currentMedia.type === "video" ? (
-                <video
-                  src={currentMedia.url}
-                  className="project-carousel-media carousel-media-clickable"
-                  controls
-                  autoPlay
-                  muted
+            <>
+              <div className="project-carousel">
+                {/* Fullscreen trigger overlay */}
+                <button
+                  className="carousel-fullscreen-btn"
                   onClick={openFullscreen}
-                />
-              ) : (
-                <img
-                  src={currentMedia.url}
-                  alt={project.title}
-                  className="project-carousel-media carousel-media-clickable"
-                  onClick={openFullscreen}
-                />
-              )}
+                  aria-label="Ver en pantalla completa"
+                  title="Pantalla completa"
+                >
+                  <Maximize2 size={16} />
+                </button>
 
-              {/* Carousel Controls */}
-              {project.media.length > 1 && (
-                <>
-                  <button
-                    className={`carousel-btn carousel-btn-prev ${mediaIndex === 0 ? "disabled" : ""}`}
-                    onClick={handlePrevMedia}
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
-                  <button
-                    className={`carousel-btn carousel-btn-next ${mediaIndex === project.media.length - 1 ? "disabled" : ""}`}
-                    onClick={handleNextMedia}
-                  >
-                    <ChevronRight size={24} />
-                  </button>
+                {currentMedia.type === "video" ? (
+                  <video
+                    src={currentMedia.url}
+                    className="project-carousel-media carousel-media-clickable"
+                    controls
+                    autoPlay
+                    muted
+                    onClick={openFullscreen}
+                  />
+                ) : (
+                  <img
+                    src={currentMedia.url}
+                    alt={project.title}
+                    className="project-carousel-media carousel-media-clickable"
+                    onClick={openFullscreen}
+                  />
+                )}
 
-                  <div className="carousel-indicators">
-                    {project.media.map((_, i) => (
-                      <div
-                        key={i}
-                        className={`carousel-dot ${i === mediaIndex ? "active" : ""}`}
-                      />
-                    ))}
-                  </div>
-                </>
+                {/* Carousel Controls */}
+                {project.media.length > 1 && (
+                  <>
+                    <button
+                      className={`carousel-btn carousel-btn-prev ${mediaIndex === 0 ? "disabled" : ""}`}
+                      onClick={handlePrevMedia}
+                      aria-label="Anterior"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      className={`carousel-btn carousel-btn-next ${mediaIndex === project.media.length - 1 ? "disabled" : ""}`}
+                      onClick={handleNextMedia}
+                      aria-label="Siguiente"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+
+                    <div className="carousel-indicators">
+                      {project.media.map((_, i) => (
+                        <div
+                          key={i}
+                          className={`carousel-dot ${i === mediaIndex ? "active" : ""}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              {currentMedia.caption && (
+                <p className="project-modal-caption">{currentMedia.caption}</p>
               )}
-            </div>
+            </>
           ) : !project.preview && project.url ? (
             // Favicon Fallback
             <div className="project-carousel fallback-modal-carousel">
@@ -261,6 +280,31 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
 
           <p className="project-modal-desc">{project.description}</p>
 
+          {project.highlights && project.highlights.length > 0 && (
+            <div className="project-modal-highlights">
+              {project.highlights.map((highlight) => (
+                <div className="project-highlight" key={highlight.title}>
+                  <h4>{highlight.title}</h4>
+                  <p>{highlight.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {project.tech && project.tech.length > 0 && (
+            <div className="tech-tags project-modal-tech">
+              {project.tech.map((tech) => (
+                <span key={tech} className="tech-tag">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {project.note && (
+            <p className="project-modal-note">{project.note}</p>
+          )}
+
           {project.url && (
             <a
               href={project.url}
@@ -268,7 +312,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               rel="noopener noreferrer"
               className="project-modal-link-btn"
             >
-              Ver Proyecto <ExternalLink size={16} />
+              {project.linkLabel ?? "Ver Proyecto"} <ExternalLink size={16} />
             </a>
           )}
         </div>

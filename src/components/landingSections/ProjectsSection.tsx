@@ -15,6 +15,12 @@ function toModalProject(p: Project): ModalProject {
     preview: p.preview,
     description: p.description,
     media: p.media,
+    badge: p.badge,
+    tagline: p.tagline,
+    highlights: p.highlights,
+    tech: p.tech,
+    note: p.note,
+    linkLabel: p.linkLabel,
   };
 }
 
@@ -61,9 +67,13 @@ export function ProjectsSection() {
                     }
                     alt={p.name}
                     className={`project-card-preview-img${!p.preview ? " fallback-favicon" : ""}`}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               )}
+
+              {p.badge && <span className="project-card-badge">{p.badge}</span>}
 
               <div className="project-card-header">
                 <h3>{p.name}</h3>

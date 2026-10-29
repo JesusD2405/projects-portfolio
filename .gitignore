@@ -45,3 +45,11 @@ next-env.d.ts
 .claude/
 CLAUDE.md
 AGENTS.md
+
+# software-agents-jd — configuración local (Claude Code / OpenCode), no subir al repo
+.opencode/agents/
+.opencode/agents-perfil
+.opencode/agents-mcp
+.opencode/hooks/suite-sync-check.sh
+.opencode/plugins/suite-sync-check/
+.opencode/opencode.json

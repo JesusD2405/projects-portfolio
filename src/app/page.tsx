@@ -66,23 +66,23 @@ const LandingPage: NextPage = () => {
             height: "100%",
           }}
         >
-          {/* Mobile portrait wallpaper (official Ubuntu 24.04 LTS Noble Numbat) */}
+          {/* Mobile portrait wallpaper (official Ubuntu 26.04 LTS Resolute Raccoon) */}
           <source
-            srcSet="imgs/backgrounds/mobile_numbat_color_1728x3840.jpg"
+            srcSet="imgs/backgrounds/resolute_raccoon_mobile_color_1728x3840.webp"
             media="(max-width: 767px)"
           />
           <source
-            srcSet="imgs/backgrounds/numbat_wallpaper_color_3480x2160.png"
+            srcSet="imgs/backgrounds/resolute_raccoon_wallpaper_color_3840x2160.webp"
             media="(min-width: 2560px)"
           />
           <source
-            srcSet="imgs/backgrounds/numbat_wallpaper_color_2560x1440.png"
+            srcSet="imgs/backgrounds/resolute_raccoon_wallpaper_color_2560x1440.webp"
             media="(min-width: 1920px)"
           />
           <Image
             className="desktop-wallpaper"
-            src="imgs/backgrounds/numbat_wallpaper_color_1920x1080.png"
-            alt="Ubuntu 24.04 LTS Noble Numbat Wallpaper"
+            src="imgs/backgrounds/resolute_raccoon_wallpaper_color_1920x1080.webp"
+            alt="Ubuntu 26.04 LTS Resolute Raccoon Wallpaper"
             quality={90}
             fill
             priority
