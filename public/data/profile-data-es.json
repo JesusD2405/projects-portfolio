@@ -3,7 +3,7 @@
   "headline": "Full-Stack Software Developer | Node.Js | Django | React | Vue.js",
   "email": "jesusdavid2405@gmail.com",
   "location": "Ciudad Guayana (8050), Edo. Bolívar, Venezuela.",
-  "about": "Desarrollo apps webs con +8 años de experiencia, lidero empredimientos en la industria del desarrollo de software y asesoro equipos de trabajo en diversas etapas de proyectos.<br><br>“La mejor manera de predecir el futuro es inventarlo.” - Steve Jobs",
+  "about": "Desarrollo apps webs con +9 años de experiencia, lidero empredimientos en la industria del desarrollo de software y asesoro equipos de trabajo en diversas etapas de proyectos.<br><br>“La mejor manera de predecir el futuro es inventarlo.” - Steve Jobs",
   "github": "https://github.com/JesusD2405",
   "githubUser": "JesusD2405",
   "linkedin": "https://www.linkedin.com/in/jesus-david-perez/",
@@ -19,9 +19,9 @@
       "role": "Full Stack Developer",
       "period": "Nov 2023 – Presente",
       "location": "Remoto - San Juan, Puerto Rico 🇵🇷",
-      "description": "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js 14.<br>- Next.js v16 y Manejo de Redux Toolkit<br>- Tailwind CSS.<br>- Api AdobeSign<br>- Integraciones con IA (Gemini 3.1, Chat GPT, Claude)<br>- ChatBots<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
+      "description": "- Desarrollador Web Full-Stack bajo, desarrollos en PHP y el framework Next.js y Manejo de Redux Toolkit<br>- Tailwind CSS.<br>- Api AdobeSign<br>- Integraciones con IA (Claude, OpenAI, Gemini)<br>- ChatBots<br>- Base de Datos Oracle.<br>- Soporte y actualizaciones de funcionalidades apps web bajo PHP, HTML, CSS, JS, JQUERY",
       "tech": [
-        "Next.js 14",
+        "Next.js",
         "Redux Toolkit",
         "Tailwind CSS",
         "Bootstrap",
@@ -301,6 +301,210 @@
     }
   ],
   "projects": [
+    {
+      "name": "MediSystem — Landing & Sistema de Gestión",
+      "preview": "projects/jd-freelancer/medisystem/preview.webp",
+      "description": "Plataforma para clínica médica con dos caras: una landing pública y un sistema interno para gestionar agenda, doctores, horarios, usuarios, tarifas y comunicación con pacientes. Incluye soporte multi-clínica.",
+      "tech": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "PostgreSQL",
+        "TypeORM",
+        "Redis",
+        "BullMQ",
+        "NextAuth",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem.up.railway.app/",
+      "badge": "Ecosistema MediSystem",
+      "tagline": "Landing institucional + backoffice para operar una clínica de principio a fin.",
+      "highlights": [
+        {
+          "title": "Landing que convierte",
+          "description": "Servicios, especialistas, promociones y solicitud de cita; responsive, accesible y optimizada para SEO."
+        },
+        {
+          "title": "Backoffice operativo",
+          "description": "Citas, doctores, horarios, usuarios y roles, tarifas, promociones y novedades desde un panel con NextAuth."
+        },
+        {
+          "title": "Base preparada para crecer",
+          "description": "PostgreSQL + TypeORM, colas BullMQ/Redis, webhook de WhatsApp y despliegue con Docker en Railway."
+        }
+      ],
+      "note": "Capturas con datos de pacientes anonimizados.",
+      "linkLabel": "Ver landing",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/landing-hero.webp",
+          "caption": "Landing pública: servicios, especialistas y solicitud de cita."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/landing-servicios.webp",
+          "caption": "Contenido y promociones gestionados desde el backoffice."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-dashboard.webp",
+          "caption": "Resumen operativo: citas, tasas, promociones y calendario."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-citas.webp",
+          "caption": "Citas con canal, estado y trazabilidad por paciente."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-mensajeria.webp",
+          "caption": "Conversaciones de WhatsApp y detalle de cada turno del bot."
+        }
+      ]
+    },
+    {
+      "name": "Chatbot WhatsApp con IA — MediSystem",
+      "preview": "projects/jd-freelancer/medisystem-chatbot/preview.webp",
+      "description": "Bot conversacional sobre WhatsApp Business API que atiende pacientes de principio a fin: responde precios y disponibilidad desde el catálogo de MediSystem, agenda citas paso a paso, orienta según síntomas y lee órdenes médicas en foto para devolver los exámenes con su costo.",
+      "tech": [
+        "WhatsApp Business API",
+        "360dialog",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Redis",
+        "BullMQ",
+        "DeepSeek / GPT / Claude",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem.up.railway.app/",
+      "badge": "Ecosistema MediSystem",
+      "tagline": "Atención y agendamiento 24/7 conectados al catálogo real de la clínica.",
+      "highlights": [
+        {
+          "title": "Agendamiento completo",
+          "description": "Servicio → especialista → horario → cédula → confirmación, con validaciones y recordatorios."
+        },
+        {
+          "title": "IA con contexto real",
+          "description": "Precios, especialidades y disponibilidad salen de PostgreSQL; la IA no inventa el catálogo."
+        },
+        {
+          "title": "Visión multimodal",
+          "description": "Lee fotos de órdenes médicas y responde con los exámenes disponibles y sus precios."
+        },
+        {
+          "title": "Guardrails y handoff",
+          "description": "Rechaza temas fuera de contexto, no diagnostica y pasa a soporte humano cuando hace falta."
+        }
+      ],
+      "note": "Conversaciones reales anonimizadas. Nombres, teléfonos y datos clínicos fueron difuminados.",
+      "linkLabel": "Ver landing",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-01-agenda.webp",
+          "caption": "Agenda guiada: servicio, especialista, horario y confirmación."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-02-orden.webp",
+          "caption": "La IA lee la orden médica y devuelve los exámenes con precio."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-03-orientacion.webp",
+          "caption": "Orientación según síntomas, sin diagnósticos ni recetas."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-04-precios.webp",
+          "caption": "Precios y promociones del catálogo real de la clínica."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-05-guardrails.webp",
+          "caption": "Fuera de contexto y traspaso a un agente humano."
+        }
+      ]
+    },
+    {
+      "name": "Asistente de Pantalla — MediSystem",
+      "preview": "projects/jd-freelancer/medisystem-assistant/preview.webp",
+      "description": "PWA para tablets que permite armar junto al paciente una solicitud de servicios: catálogo, selección, cédula y confirmación. Se alimenta del catálogo real de MediSystem, funciona principalmente para dispositivos touch screen, permitiendo una experiencia fluida y rápida.",
+      "tech": [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Zustand",
+        "PWA",
+        "Service Worker",
+        "Caddy",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem-assistant-screen-production.up.railway.app",
+      "badge": "Ecosistema MediSystem",
+      "tagline": "La tablet que acompaña al promotor de salud en la selección de servicios.",
+      "highlights": [
+        {
+          "title": "Catálogo siempre al día",
+          "description": "Sincronización cada 15 minutos con la API de MediSystem y búsqueda local sin esperas."
+        },
+        {
+          "title": "Flujo guiado en tablet",
+          "description": "Promociones, especialidades y servicios con precios en dólares y bolívares; selección pensada para hacerla junto al paciente."
+        },
+        {
+          "title": "Resistente a la red",
+          "description": "Arranca con la última copia del catálogo y guarda solicitudes en cola; reenviar nunca duplica."
+        },
+        {
+          "title": "Integrado al backoffice",
+          "description": "Cada solicitud llega como cita «Solicitud» del canal «Asistente de pantalla», lista para el equipo."
+        }
+      ],
+      "note": "Capturas con datos de pacientes anonimizados.",
+      "linkLabel": "Abrir asistente",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-inicio.webp",
+          "caption": "Inicio con promociones vigentes y acceso a especialidades."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-catalogo.webp",
+          "caption": "Catálogo sincronizado con búsqueda y selección."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-detalle.webp",
+          "caption": "Detalle del servicio con lo que incluye."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-revision.webp",
+          "caption": "Revisión de la selección y total estimado."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-paciente.webp",
+          "caption": "Identificación del paciente con teléfono protegido."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-enviado.webp",
+          "caption": "Solicitud enviada al backoffice como cita."
+        }
+      ]
+    },
     {
       "name": "Portafolio Ubuntu (Proyecto Actual)",
       "preview": "imgs/og/og-image.png",

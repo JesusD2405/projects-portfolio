@@ -10,6 +10,12 @@
 export interface ExperienceProjectMedia {
   type: "image" | "video";
   url: string;
+  caption?: string; // Optional caption shown below the media in the modal
+}
+
+export interface ProjectHighlight {
+  title: string;
+  description: string;
 }
 
 export interface ExperienceProject {
@@ -49,6 +55,11 @@ export interface Project {
   link: string;
   preview?: string; // Optional URL for the preview image/gif on the card
   media?: ExperienceProjectMedia[]; // Optional array of media for the modal carousel
+  badge?: string; // Optional badge shown on the card and modal (e.g. product suite)
+  tagline?: string; // Optional short subtitle shown in the modal
+  highlights?: ProjectHighlight[]; // Optional case-study highlights
+  note?: string; // Optional footnote (e.g. anonymized data)
+  linkLabel?: string; // Optional CTA label; defaults to "Ver Proyecto"
 }
 
 export interface SkillCategory {

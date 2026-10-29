@@ -3,7 +3,7 @@
   "headline": "Full-Stack Software Developer | Node.Js | Django | React | Vue.js",
   "email": "jesusdavid2405@gmail.com",
   "location": "Ciudad Guayana (8050), Bolívar State, Venezuela.",
-  "about": "I develop web apps with +8 years of experience, lead startups in the software development industry, and advise teams at various stages of projects.<br><br>“The best way to predict the future is to invent it.” - Steve Jobs",
+  "about": "I develop web apps with +9 years of experience, lead startups in the software development industry, and advise teams at various stages of projects.<br><br>“The best way to predict the future is to invent it.” - Steve Jobs",
   "github": "https://github.com/JesusD2405",
   "githubUser": "JesusD2405",
   "linkedin": "https://www.linkedin.com/in/jesus-david-perez/",
@@ -19,9 +19,9 @@
       "role": "Full Stack Developer",
       "period": "Nov 2023 – Present",
       "location": "Remote - San Juan, Puerto Rico 🇵🇷",
-      "description": "- Full-Stack Web Developer, building applications in PHP and the Next.js 14 framework.<br>- Next.js v16 and Redux Toolkit.<br>- Tailwind CSS.<br>- AdobeSign API.<br>- AI Integrations (Gemini 3.1, ChatGPT, Claude).<br>- Chatbots.<br>- Oracle Database.<br>- Support and feature updates for web applications using PHP, HTML, CSS, JS, and jQuery.",
+      "description": "- Full-Stack Web Developer, building applications in PHP and the Next.js framework and Redux Toolkit.<br>- Tailwind CSS.<br>- AdobeSign API.<br>- AI Integrations (Claude, OpenAI, Gemini).<br>- Chatbots.<br>- Oracle Database.<br>- Support and feature updates for web applications using PHP, HTML, CSS, JS, and jQuery.",
       "tech": [
-        "Next.js 14",
+        "Next.js",
         "Redux Toolkit",
         "Tailwind CSS",
         "Bootstrap",
@@ -301,6 +301,210 @@
     }
   ],
   "projects": [
+    {
+      "name": "MediSystem — Landing & Management System",
+      "preview": "projects/jd-freelancer/medisystem/preview.webp",
+      "description": "Medical clinic platform with two sides: a public landing page and an internal system to manage schedules, doctors, hours, users, rates and patient communication. Includes multi-clinic support.",
+      "tech": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "PostgreSQL",
+        "TypeORM",
+        "Redis",
+        "BullMQ",
+        "NextAuth",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem.up.railway.app/",
+      "badge": "MediSystem Suite",
+      "tagline": "Institutional landing + backoffice to run a clinic end to end.",
+      "highlights": [
+        {
+          "title": "Landing that converts",
+          "description": "Services, specialists, promotions and appointment requests; responsive, accessible and SEO-ready."
+        },
+        {
+          "title": "Operational backoffice",
+          "description": "Appointments, doctors, schedules, users and roles, rates, promotions and release notes in one panel with NextAuth."
+        },
+        {
+          "title": "Built to grow",
+          "description": "PostgreSQL + TypeORM, BullMQ/Redis queues, WhatsApp webhook and Docker deployment on Railway."
+        }
+      ],
+      "note": "Screenshots with anonymized patient data.",
+      "linkLabel": "View landing",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/landing-hero.webp",
+          "caption": "Public landing: services, specialists and appointment requests."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/landing-servicios.webp",
+          "caption": "Content and promotions managed from the backoffice."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-dashboard.webp",
+          "caption": "Operations overview: appointments, rates, promotions and calendar."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-citas.webp",
+          "caption": "Appointments with channel, status and per-patient traceability."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem/admin-mensajeria.webp",
+          "caption": "WhatsApp conversations and every bot turn in detail."
+        }
+      ]
+    },
+    {
+      "name": "WhatsApp AI Chatbot — MediSystem",
+      "preview": "projects/jd-freelancer/medisystem-chatbot/preview.webp",
+      "description": "Conversational bot on WhatsApp Business API that handles patients end to end: answers prices and availability from the MediSystem catalog, books appointments step by step, guides patients based on symptoms and reads medical order photos to return tests with their cost.",
+      "tech": [
+        "WhatsApp Business API",
+        "360dialog",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Redis",
+        "BullMQ",
+        "DeepSeek / GPT / Claude",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem.up.railway.app/",
+      "badge": "MediSystem Suite",
+      "tagline": "24/7 care and appointment booking connected to the clinic's real catalog.",
+      "highlights": [
+        {
+          "title": "End-to-end booking",
+          "description": "Service → specialist → schedule → ID → confirmation, with validation and reminders."
+        },
+        {
+          "title": "AI with real context",
+          "description": "Prices, specialties and availability come from PostgreSQL; the AI never invents the catalog."
+        },
+        {
+          "title": "Multimodal vision",
+          "description": "Reads medical order photos and replies with available tests and prices."
+        },
+        {
+          "title": "Guardrails and handoff",
+          "description": "Rejects off-topic requests, avoids diagnoses and hands off to human support when needed."
+        }
+      ],
+      "note": "Real conversations, anonymized. Names, phone numbers and clinical data were blurred.",
+      "linkLabel": "View landing",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-01-agenda.webp",
+          "caption": "Guided booking: service, specialist, schedule and confirmation."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-02-orden.webp",
+          "caption": "The AI reads the medical order and returns tests with prices."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-03-orientacion.webp",
+          "caption": "Symptom guidance without diagnoses or prescriptions."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-04-precios.webp",
+          "caption": "Prices and promotions from the clinic's real catalog."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-chatbot/slide-05-guardrails.webp",
+          "caption": "Off-topic guardrails and handoff to a human agent."
+        }
+      ]
+    },
+    {
+      "name": "Screen Assistant — MediSystem",
+      "preview": "projects/jd-freelancer/medisystem-assistant/preview.webp",
+      "description": "Tablet PWA that lets you build a service request together with the patient: catalog, selection, ID and confirmation. It is powered by the real MediSystem catalog and is designed primarily for touch screen devices, providing a smooth and fast experience.",
+      "tech": [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Zustand",
+        "PWA",
+        "Service Worker",
+        "Caddy",
+        "Docker",
+        "Railway"
+      ],
+      "link": "https://medisystem-assistant-screen-production.up.railway.app",
+      "badge": "MediSystem Suite",
+      "tagline": "The tablet that guides health promoters through service selection.",
+      "highlights": [
+        {
+          "title": "Always up-to-date catalog",
+          "description": "Syncs with the MediSystem API every 15 minutes and searches locally with no waiting."
+        },
+        {
+          "title": "Guided tablet flow",
+          "description": "Promotions, specialties and services with USD and VES prices; designed to be used together with the patient."
+        },
+        {
+          "title": "Network resilient",
+          "description": "Starts with the last catalog copy and queues requests offline; resending never duplicates."
+        },
+        {
+          "title": "Backoffice integrated",
+          "description": "Every request arrives as a 'Request' appointment from the 'Screen Assistant' channel, ready for the team."
+        }
+      ],
+      "note": "Screenshots with anonymized patient data.",
+      "linkLabel": "Open assistant",
+      "media": [
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-inicio.webp",
+          "caption": "Home with active promotions and access to specialties."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-catalogo.webp",
+          "caption": "Catalog synced from the API with search and selection."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-detalle.webp",
+          "caption": "Service detail with everything included."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-revision.webp",
+          "caption": "Selection review and estimated total."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-paciente.webp",
+          "caption": "Patient identification with a protected phone number."
+        },
+        {
+          "type": "image",
+          "url": "projects/jd-freelancer/medisystem-assistant/asistente-enviado.webp",
+          "caption": "Request sent to the backoffice as an appointment."
+        }
+      ]
+    },
     {
       "name": "Ubuntu Portfolio (Current Project)",
       "preview": "imgs/og/og-image.png",

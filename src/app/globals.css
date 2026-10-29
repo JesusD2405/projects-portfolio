@@ -706,8 +706,8 @@ body {
 }
 
 .file-sidebar {
-  width: 220px;
-  min-width: 220px;
+  width: 240px;
+  min-width: 240px;
   background: #252525;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   padding: 16px;
@@ -724,7 +724,9 @@ body {
 
 .file-item {
   color: var(--ubuntu-text);
-  font-size: 13px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -1349,6 +1351,10 @@ body {
 .project-carousel {
   position: relative;
   width: 100%;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
   aspect-ratio: 16/9;
   background: #000;
   border-radius: 8px;
@@ -2347,5 +2353,118 @@ body {
   .timeline-dot svg {
     width: 10px;
     height: 10px;
+  }
+}
+
+/* ── Project case-study enhancements ── */
+.project-card-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 9px;
+  border: 1px solid rgba(233, 84, 32, 0.35);
+  border-radius: 999px;
+  color: var(--ubuntu-orange);
+  background: rgba(233, 84, 32, 0.08);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-modal-badge {
+  align-self: flex-start;
+  margin-bottom: -10px;
+  padding: 3px 10px;
+  border: 1px solid rgba(233, 84, 32, 0.4);
+  border-radius: 999px;
+  color: var(--ubuntu-orange);
+  background: rgba(233, 84, 32, 0.1);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-modal-tagline {
+  margin: -10px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.project-modal-caption {
+  margin: -6px 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.project-modal-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.project-highlight:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.project-highlight {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-highlight h4 {
+  margin: 0 0 4px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.project-highlight p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.project-modal-tech {
+  margin: 0;
+}
+
+.project-modal-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .project-modal-content {
+    padding: 18px;
+  }
+
+  .project-modal-title {
+    font-size: 18px;
+  }
+
+  .project-modal-tagline {
+    font-size: 14px;
+  }
+
+  .project-modal-caption {
+    font-size: 12px;
+  }
+
+  .project-modal-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .project-highlight:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 }
