@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Jesús David Pérez",
   },
   description:
-    "Full-Stack Software Developer con +8 años de experiencia. Especialista en React, Next.js, Node.js, Django y Vue.js. Disponible para proyectos remotos. Ciudad Guayana, Venezuela.",
+    "Full-Stack Software Developer con +9 años de experiencia. Especialista en React, Next.js, Node.js, Django y Vue.js. Disponible para proyectos remotos. Ciudad Guayana, Venezuela.",
   keywords: [
     "Full-Stack Developer",
     "Software Developer",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     siteName: "Jesús David Pérez — Portfolio",
     title: "Jesús David Pérez | Full-Stack Software Developer",
     description:
-      "Full-Stack Software Developer con +8 años de experiencia. React, Next.js, Node.js, Django, Vue.js. Portfolio inspirado en Ubuntu 26.04 LTS.",
+      "Full-Stack Software Developer con +9 años de experiencia. React, Next.js, Node.js, Django, Vue.js. Portfolio inspirado en Ubuntu 26.04 LTS.",
     images: [
       {
         url: `${BASE_URL}/imgs/og/og-image.png`,
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jesús David Pérez | Full-Stack Software Developer",
     description:
-      "Full-Stack Developer con +8 años de experiencia. React, Next.js, Node.js, Django, Vue.js.",
+      "Full-Stack Developer con +9 años de experiencia. React, Next.js, Node.js, Django, Vue.js.",
     images: [`${BASE_URL}/imgs/og/og-image.png`],
     creator: "@JesusD2405",
   },
