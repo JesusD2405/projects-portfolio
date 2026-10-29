@@ -139,7 +139,7 @@ function buildInfoRows(langs: string, profileData: ProfileData) {
       content: (
         <>
           <span className="terminal-key">Experience:</span>{" "}
-          <span className="neofetch-value">+8 años</span>
+          <span className="neofetch-value">+9 años</span>
         </>
       ),
     },
